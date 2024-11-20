@@ -10,6 +10,7 @@ import OnlyAdminPrivateRoute from './Components/OnlyAdminPrivateRoute';
 
 import Addstaff from './Pages/Addstaff';
 import Updatestaff from './Pages/updateStaff';
+import FormsPage from './Pages/UserDashboard';
 
 
 
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
      
         <Route path='/userlogin' element={<UserSignIn/>}/>
+        <Route path='/userdash' element={<FormsPage/>}/>
 
  
         <Route path="/addstaff" element={<Addstaff/>}/>
