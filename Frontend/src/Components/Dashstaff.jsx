@@ -12,7 +12,7 @@ export default function Dashstaff() {
     const [memberIDToDelete, setmemberIdToDelete] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedStaffType, setSelectedStaffType] = useState('');  // New state for radio buttons
-
+  
     useEffect(() => {
         const fetchs = async () => {
           try {
