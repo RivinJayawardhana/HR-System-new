@@ -89,55 +89,21 @@ export default function Addstaff() {
         <h1 className="text-center text-3xl my-7 font-semibold">Add Staff Member</h1>
         <form className="flex flex-col  gap-4" onSubmit={handleSubmit}>
         
-         <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
-            <FileInput type='file'accept='image/*' onChange={(e)=>setFile(e.target.files[0])}/>
-            <Button onClick={handleUploadImage} type='button'gradientDuoTone='purpleToBlue'size='sm' outline disabled={imageUploadProgress}>
-              {
-                imageUploadProgress ?(
-                <div className="w-16 h-16" >
-                  <CircularProgressbar value={imageUploadProgress} text={`${imageUploadProgress || 0}`}/>
-                </div>
-                ) :('Upload Image')
-
-              }
-            </Button>
-        </div>
-        {imageUploadError && (
-          <Alert color='failure'>{imageUploadError}</Alert>
-        )}
-        {formData.image && (
-          <img src={formData.image} alt="upload" className="w-full h-82 object-cover"/>
-        )}
+         
+        
+       
         <TextInput type='text'placeholder='Member Name'required id='Member Name'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, membername: e.target.value })
+              setFormData({ ...formData, Staffmembername: e.target.value })
             }/>
        
-            <TextInput type='number'placeholder='Age'required id='Age'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, age: e.target.value })
+           
+            <TextInput type='text'placeholder='User Name'required id='User Name'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, username: e.target.value })
             }/>
-            <TextInput type='text'placeholder='Phone number'required id='Phone number'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, number: e.target.value })
+<TextInput type='text'placeholder='Password'required id='Password'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
             }/>
-<TextInput type='email'placeholder='Email'required id='email'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }/>
-            <Select onChange={(e) => setFormData({ ...formData, type: e.target.value })}>
-            <option value='Administrative staff'>Administrative staff</option>
-            <option value='cleaning staff'>cleaning staff</option>
-            <option value='Security staff'>Security staff</option>
-            <option value='Technical staff'>Technical staff</option>
-            <option value='Laundary staff'>Laundary staff</option>
-          </Select>
-            <TextInput type='text'placeholder='Address'required id='Address'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, Address: e.target.value })
-            }/>
-            <TextInput type='number'placeholder='Salary 'required id='Salary'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, salary: e.target.value })
-            }/>
-          
-            <TextInput type='text'placeholder='Task'required id='Task'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, task: e.target.value })
-            } defaultValue={"none"}/>
+           
             
             
         <Button type='submit' gradientDuoTone='purpleToBlue'>Add</Button>

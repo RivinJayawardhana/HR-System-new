@@ -160,39 +160,8 @@ export default function DashProfile() {
             ref={filePickerRef}
             hidden
           />
-          <div
-            className="relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full"
-            onClick={() => filePickerRef.current.click()}
-          >
-            {imagePercent > 0 && imagePercent < 100 && (
-              <CircularProgressbar
-                value={imagePercent}
-                text={`${imagePercent}%`}
-                strokeWidth={5}
-                styles={{
-                  root: {
-                    width: "100%",
-                    height: "100%",
-                    position: "absolute",
-                  },
-                  path: {
-                    stroke: `rgba(62, 152, 199, ${imagePercent / 100})`,
-                  },
-                }}
-                aria-label="Uploading Image"
-              />
-            )}
-            <img
-              src={imageFileUrl || currentUser.profilePicture}
-              alt="user"
-              className={`rounded-full w-full h-full border-8 border-[lightgray] ${
-                imagePercent && imagePercent < 100 ? "opacity-60" : ""
-              }`}
-              aria-label="User Profile Image"
-            />
-          </div>
-          {imageError && <Alert color="failure">{imageError}</Alert>}
-
+         
+   
           <TextInput
             type="text"
             id="username"
@@ -207,55 +176,11 @@ export default function DashProfile() {
             defaultValue={currentUser.email}
             onChange={handleChange}
           />
-          <TextInput
-            type="text"
-            id="adress"
-            placeholder="adress"
-            defaultValue={currentUser.adress}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="mobile"
-            placeholder="mobile"
-            defaultValue={currentUser.mobile}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="mobile"
-            placeholder="Your IT Number"
-            defaultValue={currentUser.itnumber}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="distance"
-            placeholder="Distance To Campus"
-            defaultValue={currentUser.distance}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="acYear"
-            placeholder="Accademic Year"
-            defaultValue={currentUser.acYear}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="mode"
-            placeholder="Transport Mode"
-            defaultValue={currentUser.mode}
-            onChange={handleChange}
-          />
-          <TextInput
-            type="text"
-            id="degree"
-            placeholder="Your Degree"
-            defaultValue={currentUser.degree}
-            onChange={handleChange}
-          />
+        
+       
+       
+        
+        
           <div>
             <div className="relative">
               <TextInput
@@ -325,40 +250,10 @@ export default function DashProfile() {
             {loading ? "Loading.." : "Update Account"}
           </Button>
 
-          <Link to="#">
-            <Button
-              type="button"
-              gradientDuoTone="purpleToBlue"
-              className="w-full , text-black bg-slate-400 "
-              outline
-            >
-              Add Articles
-            </Button>
-          </Link>
 
           {currentUser.isAdmin && (
             <>
-              <Link to="/addproduct">
-                <Button
-                  type="button"
-                  gradientDuoTone="purpleToBlue"
-                  className="w-full , text-black bg-slate-400 "
-                  outline
-                >
-                  Add products
-                </Button>
-              </Link>
-
-              <Link to="/addroom">
-                <Button
-                  type="button"
-                  gradientDuoTone="purpleToBlue"
-                  className="w-full , text-black bg-slate-400 "
-                  outline
-                >
-                  Add Rooms
-                </Button>
-              </Link>
+         
 
               <Link to="/addstaff">
                 <Button
@@ -367,7 +262,7 @@ export default function DashProfile() {
                   className="w-full , text-black bg-slate-400 "
                   outline
                 >
-                  Add Staff
+                  Create User
                 </Button>
               </Link>
             </>
