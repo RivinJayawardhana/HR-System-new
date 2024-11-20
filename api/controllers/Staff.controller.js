@@ -4,37 +4,20 @@ import { errorHandler } from "../utils/error.js";
 
 export const add = async(req,res,next)=>{
 
-    if (req.body.number) {
-        const mobileRegex = /^(071|076|077|075|078|070|074|072)\d{7}$/;
-        if (!mobileRegex.test(req.body.number)) {
-            return next(errorHandler(400, 'Invalid mobile number format.'));
-        }
-    }
-   const Staffmembername=req.body.membername;
+    
+   const Staffmembername=req.body.Staffmembername;
    
-   const Age=Number(req.body.age);
+ 
   
-   const email=req.body.email;
-   const address=req.body.Address;
-   const task=req.body.task;
-   const phonenumber=req.body.number;
-  const Picture=req.body.image;
-  const stafftype=req.body.type;
-  const salary=req.body.salary;
+  const username=req.body.username;
+  
+  const password=req.body.password;
   
       const newstaffmember = new staff({
         Staffmembername,
-        Age,
-        phonenumber,
-        email,
-        address,
-     
-     
-        task,
-       
-        Picture,
-        stafftype,
-        salary,
+        username,
+        password,
+        
         
 });
 
