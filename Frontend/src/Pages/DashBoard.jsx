@@ -4,6 +4,7 @@ import DashSideBar from "../Components/DashSideBar";
 import DashProfile from "../Components/DashProfile";
 import DashUsers from "../Components/DashUsers";
 import Dashstaff from "../Components/Dashstaff";
+import AdminDashboard from "../Components/dashuserdetails";
 
 
 
@@ -27,6 +28,7 @@ export default function DashBoard() {
       {tab==='profile' && <DashProfile/>}
       {tab === 'users' && <DashUsers/>}
       {tab === 'staff' && <Dashstaff/>}
+      {tab === 'view' && <AdminDashboard/>}
     
 
      

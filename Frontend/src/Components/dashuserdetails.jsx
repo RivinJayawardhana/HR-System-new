@@ -1,98 +1,86 @@
 import React, { useState } from "react";
-import "./AdminDashboard.css"; // Import CSS for styling
+import "./AdminDashboard.css";
 
-// Dummy data for users and their forms
-const dummyUsers = [
+// Dummy data for user forms
+const dummyForms = [
   {
     id: 1,
-    name: "John Doe",
-    email: "john.doe@example.com",
-    forms: [
-      { title: "Personal Details", status: "Completed" },
-      { title: "Job Preferences", status: "Pending" },
-      { title: "Document Uploads", status: "Completed" },
-    ],
+    title: "Personal Details",
+    status: "Completed",
+    data: {
+      Name: "John Doe",
+      Age: "28",
+      Email: "johndoe@example.com",
+    },
   },
   {
     id: 2,
-    name: "Jane Smith",
-    email: "jane.smith@example.com",
-    forms: [
-      { title: "Personal Details", status: "Completed" },
-      { title: "Job Preferences", status: "Completed" },
-      { title: "Document Uploads", status: "Pending" },
-    ],
+    title: "Job Preferences",
+    status: "Pending",
+    data: {
+      "Preferred Role": "Software Engineer",
+      "Expected Salary": "Not Submitted",
+    },
+  },
+  {
+    id: 3,
+    title: "Document Uploads",
+    status: "Completed",
+    data: {
+      "Resume": "Uploaded",
+      "Cover Letter": "Uploaded",
+      "ID Proof": "Uploaded",
+    },
   },
 ];
 
 const AdminDashboard = () => {
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [expandedFormId, setExpandedFormId] = useState(null);
 
-  const handleUserClick = (user) => {
-    setSelectedUser(user);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedUser(null);
+  const handleTileClick = (formId) => {
+    if (expandedFormId === formId) {
+      setExpandedFormId(null); // Collapse if clicked again
+    } else {
+      setExpandedFormId(formId); // Expand clicked form
+    }
   };
 
   return (
     <div className="admin-dashboard">
       <h1 className="dashboard-title">Admin Dashboard</h1>
-      <div className="user-table">
-        <table>
-          <thead>
-            <tr>
-              <th>User Name</th>
-              <th>Email</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {dummyUsers.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>
-                  <button
-                    className="view-details-btn"
-                    onClick={() => handleUserClick(user)}
-                  >
-                    View Details
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {selectedUser && (
-        <div className="user-modal">
-          <div className="modal-content">
-            <h2>{selectedUser.name}</h2>
-            <p>
-              <strong>Email: </strong> {selectedUser.email}
-            </p>
-            <h3>Forms</h3>
-            <ul>
-              {selectedUser.forms.map((form, index) => (
-                <li
-                  key={index}
-                  className={`form-item ${
-                    form.status === "Completed" ? "completed" : "pending"
-                  }`}
-                >
-                  {form.title} - {form.status}
-                </li>
-              ))}
-            </ul>
-            <button className="close-btn" onClick={handleCloseModal}>
-              Close
-            </button>
+      <div className="form-tiles">
+        {dummyForms.map((form) => (
+          <div
+            key={form.id}
+            className={`form-tile ${
+              form.status === "Completed" ? "completed" : "pending"
+            }`}
+          >
+            <div onClick={() => handleTileClick(form.id)}>
+              <h3>{form.title}</h3>
+              <p>Status: {form.status}</p>
+            </div>
+            {expandedFormId === form.id && (
+              <div className="form-details">
+                <h4>Form Data</h4>
+                <form>
+                  {Object.entries(form.data).map(([key, value], index) => (
+                    <div key={index} className="form-field">
+                      <label>{key}</label>
+                      <input
+                        type="text"
+                        value={value}
+                        readOnly
+                        className="readonly-input"
+                      />
+                    </div>
+                  ))}
+                </form>
+              </div>
+            )}
           </div>
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 };
