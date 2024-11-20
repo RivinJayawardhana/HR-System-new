@@ -63,98 +63,15 @@ export default function DashSideBar() {
                   Users
                 </Sidebar.Item>
               </Link>
-              <Link to='/dashboard?tab=staff' key="staff">
-                <Sidebar.Item
-                  active={tab === 'staff'}
-                  icon={HiOutlineUserGroup}
-                  as='div'
-                >
-                  Staff
-                </Sidebar.Item>
-              </Link>
-              <Link to="/dashboard?tab=requests" key="requests">
-                <Sidebar.Item
-                  active={tab === "requests"}
-                  icon={HiBookmark}
-                  labelColor="dark"
-                  as="div"
-                >
-                  Requests
-                </Sidebar.Item>
-              </Link>
+        
+           
+           
+        
 
-              <Link to="/dashboard?tab=products" key="products">
-                <Sidebar.Item
-                  active={tab === "products"}
-                  icon={HiGift}
-                  as="div"
-                >
-                  Products
-                </Sidebar.Item>
-              </Link>
 
-              <Link to='/dashboard?tab=rooms' key="rooms">
-                <Sidebar.Item
-                  active={tab === 'rooms'}
-                  icon={HiOutlineHome}
-                  as='div'
-                >
-                  Rooms
-                </Sidebar.Item>
-              </Link>
 
-              <Link to="/dashboard?tab=bookings" key="bookings">
-                <Sidebar.Item
-                  active={tab === "bookings"}
-                  icon={HiOutlineBookmarkAlt}
-                  as="div"
-                  
-                >
-                  Booking Requests
-                </Sidebar.Item>
-              </Link>
+              
              
-              <Link to="/dashboard?tab=recived_orders" key="orders_recived">
-                <Sidebar.Item
-                  active={tab === "recived_orders"}
-                  icon={HiArchive}
-                  as="div"
-                >
-                  Recieved Orders
-                </Sidebar.Item>
-              </Link>
-
-
-
-              <Link to="/dashboard?tab=support-desk" key="support-desk">
-                <Sidebar.Item
-                  active={tab === "support-desk"}
-                  icon={HiDesktopComputer}
-                  as="div"
-                >
-                  Support Desk
-                </Sidebar.Item>
-              </Link>
-
-              <Link to="/dashboard?tab=announcement" key="announcement">
-                <Sidebar.Item
-                  active={tab === "announcement"}
-                  icon={HiSpeakerphone}
-                  as="div"
-                >
-                  Announcements
-                </Sidebar.Item>
-              </Link>
-
-              <Link to="/dashboard?tab=suppliers" key="suppliers">
-                <Sidebar.Item
-                  active={tab === "suppliers"}
-                  icon={HiSupport}
-                  as="div"
-                >
-                 Suppliers
-                </Sidebar.Item>
-              </Link>
 {/* 
               <Link to="/dashboard?tab=pending_suppliers" key="pending_suppliers">
                 <Sidebar.Item
@@ -168,49 +85,11 @@ export default function DashSideBar() {
             </>
           )}
 
-          <Link to="/dashboard?tab=my_requests" key="myrequests">
-            <Sidebar.Item
-              active={tab === "my_requests"}
-              icon={HiBookmark}
-              labelColor="dark"
-              as="div"
-            >
-              My Requests
-            </Sidebar.Item>
-          </Link>
+     
 
-          <Link to="/dashboard?tab=mybookings" key="mybookings">
-            <Sidebar.Item
-              active={tab === "my_requests"}
-              icon={HiOutlineBookmarkAlt}
-              labelColor="dark"
-              as="div"
-            >
-              My Bookings
-            </Sidebar.Item>
-          </Link>
           
 
-          <Link to="/dashboard?tab=my_orders" key="orders">
-            <Sidebar.Item
-              active={tab === "my_orders"}
-              icon={HiOutlineArchive}
-              as="div"
-            >
-              My Orders
-            </Sidebar.Item>
-          </Link>
 
-          <Link to="/dashboard?tab=my_tickets" key="tickets">
-            <Sidebar.Item
-              active={tab === "my_tickets"}
-              icon={HiTicket}
-              as="div"
-            >
-              My Tickets
-            </Sidebar.Item>
-          </Link>
-          
 <hr />
           <Sidebar.Item
             icon={HiArrowSmRight}
