@@ -45,6 +45,7 @@ import ApprovedSuppliers from './Components/DashApprovedSuppliers';
 import DashSupplierRegistration from './Components/DashSupplierRegistration';
 import UpdateSellerRequest from './Pages/UpdateSellerRequest';
 import InventorySummary from './Pages/InventorySummary';
+import UserSignIn from './Pages/userlogin';
 
 
 
@@ -57,6 +58,7 @@ export default function App() {
        
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/product-page" element={<ProductPage/>}/>
+        <Route path='/userlogin' element={<UserSignIn/>}/>
 
         <Route path="/room-page" element={<RoomPage/>}/>
         <Route path="/product/:productSlug" element={<PostProduct/>} />

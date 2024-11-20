@@ -30,7 +30,7 @@ export default function UserSignIn() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    email: formData.email,
+                    username: formData.email,
                     password: formData.password,
                     
                 }),

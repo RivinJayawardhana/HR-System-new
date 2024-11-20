@@ -1,6 +1,8 @@
 
 import staff from "../models/staff.model.js";
+import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
+import jwt from "jsonwebtoken";
 
 export const add = async(req,res,next)=>{
 
@@ -36,14 +38,17 @@ export const add = async(req,res,next)=>{
 
 
 export const usersignin = async(req,res,next)=>{
-  const {email,password} = req.body;
-  if(!email || !password || email==="" || password===""){
+  const {username,password} = req.body;
+  if(!username || !password || username==="" || password===""){
     next(errorHandler(400,"All fields are required"));
   }
   try{
     const validUser = await staff.findOne({username});
     if(!validUser) return next(errorHandler(404,'User not found!'));
-    const validPassword = bcryptjs.compareSync(password,validUser.password);
+    let validPassword;
+    if(password== validUser.password){
+        validPassword = true;
+    };
     if(!validPassword) return next(errorHandler(400,'Invalid Credentials!'));
     const token = jwt.sign({id:validUser._id , isAdmin:validUser.isAdmin},process.env.JWT_SECRET);
     const{password:hashedPassword, ...rest} = validUser._doc;
