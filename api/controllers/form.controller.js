@@ -49,3 +49,22 @@ export const add = async(req,res,next)=>{
 
 
 }
+
+
+
+export const Getmember= async(req,res,next)=>{
+    const userId= req.params.id;
+    console.log(userId);
+    staff.findOne({_id:userId}).then((staff)=>{
+  
+      if (staff){
+          res.json(staff)
+         } else {
+          res.status(401);
+          console.log("error")
+          
+        }
+  
+  })
+  
+  }
