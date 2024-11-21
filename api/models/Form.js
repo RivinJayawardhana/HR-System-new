@@ -2,11 +2,16 @@ import mongoose from "mongoose";
 
 const formSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-  title: { type: String, required: true },
-  description: { type: String },
+  fullname: { type: String, required: true },
+  address: { type: String, required: true },
+  contactno: { type: String, required: true },
+  dateofbirth: { type: String, required: true },
+  NIC: { type: String, required: true },
+  DateofJoin: { type: String, required: true },
+  CDSDetails: { type: Boolean, required: true },
+
   status: { type: String, default: "Pending" }, // Pending, Completed
-  file: { type: String }, // File path if uploaded
-  textData: { type: String }, // For text-based forms
+
 });
 
 module.exports = mongoose.model("Form", formSchema);
