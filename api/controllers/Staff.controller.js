@@ -53,7 +53,8 @@ export const usersignin = async(req,res,next)=>{
     const token = jwt.sign({id:validUser._id , isAdmin:validUser.isAdmin},process.env.JWT_SECRET);
     const{password:hashedPassword, ...rest} = validUser._doc;
     const expiryDate = new Date(Date.now()+3600000);
-    res.cookie('acess_token',token,{httpOnly:true,expires:expiryDate}).status(200).json(rest);
+    res.cookie('acess_token',token,{httpOnly:true,expires:expiryDate}).status(200).json({ ...rest, id: validUser._id }); ;
+   
   }catch(error){
     next(error);
   }
