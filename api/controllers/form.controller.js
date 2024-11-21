@@ -52,13 +52,13 @@ export const add = async(req,res,next)=>{
 
 
 
-export const Getmember= async(req,res,next)=>{
+export const Getform= async(req,res,next)=>{
     const userId= req.params.id;
     console.log(userId);
-    staff.findOne({_id:userId}).then((staff)=>{
+    Form.findOne({userId:userId}).then((Form)=>{
   
-      if (staff){
-          res.json(staff)
+      if (Form){
+          res.json(Form)
          } else {
           res.status(401);
           console.log("error")
