@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./UserDashboard.css"; // Import CSS for styling
+import { useParams } from "react-router-dom";
 
 const dummyForms = [
   { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
@@ -10,6 +11,7 @@ const dummyForms = [
 
 const UserDashboard = () => {
   const [selectedForm, setSelectedForm] = useState(null);
+  const { id } = useParams();
 
   const handleTileClick = (form) => {
     setSelectedForm(form);
@@ -18,7 +20,7 @@ const UserDashboard = () => {
   const handleCloseModal = () => {
     setSelectedForm(null);
   };
-
+  console.log(id)
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">User Dashboard</h1>

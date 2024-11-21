@@ -31,7 +31,7 @@ export default function App() {
 
      
         <Route path='/userlogin' element={<UserSignIn/>}/>
-        <Route path='/userdash' element={<FormsPage/>}/>
+        <Route path='/userdash/:id' element={<FormsPage/>}/>
 
  
         <Route path="/addstaff" element={<Addstaff/>}/>

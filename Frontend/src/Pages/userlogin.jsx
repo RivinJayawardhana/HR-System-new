@@ -41,9 +41,9 @@ export default function UserSignIn() {
                 dispatch(singInFailure(data.message));
                 return;
             }
-            //alert(data.id)
+            const id=data.id
             dispatch(signInSuccess(data));
-            //navigate('/userdash');
+            navigate(`/userdash/${id}`);
         } catch (error) {
             dispatch(singInFailure(error.message));
         }
