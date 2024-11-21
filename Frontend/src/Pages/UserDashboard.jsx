@@ -17,7 +17,7 @@ const UserDashboard = () => {
 
   const handleTileClick = (form) => {
     setSelectedForm(form);
-    navigate('/histryform')
+    navigate(`/histryform/${id}`)
 
   };
 

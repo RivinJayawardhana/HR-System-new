@@ -9,32 +9,19 @@ import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate,useParams } from "react-router-dom";
 
 export default function Updatestaff() {
-    const[file,setFile]=useState(null);
-    const[imageUploadProgress,setImageUploadProgress] = useState(null);
-    const[imageUploadError,setImageUploadError] = useState(null);
     const [formData , setFormData] = useState({});
     const [publishError, setPublishError] = useState(null);
-    const [name,setname] = useState ([])
-    const[age,setage]=useState();
-    const[email,setemail]=useState();
-    const[image,setimage]=useState();
-    const[number,setnumber]=useState();
-    const[address,setaddress]=useState();
-    const[task,settask]=useState();
-    const[type,settype]=useState();
-    const[salary,setsalary]=useState();
-
-    
-
-  const { id } = useParams();
-
-  const navigate = useNavigate();
+    const { id } = useParams();
+    const navigate = useNavigate();
+  
  
  const handleSubmit = async (e) => {
+    
+    formData.append('userId', id);
     e.preventDefault();
     try {
-      const res = await fetch(`/api/staff/updatemember/${id}`, {
-        method: 'PUT',
+      const res = await fetch(`/api/form/add`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -64,6 +51,7 @@ export default function Updatestaff() {
       
         <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, fullname: e.target.value })
+            
             } />
        
             <TextInput type='text'placeholder='Address'required id='Age'className='flex-1'  onChange={(e) =>
@@ -86,7 +74,7 @@ export default function Updatestaff() {
             } />
 
             <label>CDC Account </label>
-             <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} defaultValue={type}>
+             <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} >
             <option value='yes'>yes</option>
             <option value='no'>no</option>
 

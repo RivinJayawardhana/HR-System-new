@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/view" element={<AdminDashboard />} />
         <Route path="/view" element={<AdminDashboard />} />
-        <Route path="/histryform" element={<Histryform />} />
+        <Route path="/histryform/:id" element={<Histryform />} />
 
      
         <Route path='/userlogin' element={<UserSignIn/>}/>
