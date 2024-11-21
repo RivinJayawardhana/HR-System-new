@@ -3,32 +3,6 @@ import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip
 
 const DocumentDropdown = () => {
   // Sample document data with status
-  const documents = [
-    {
-      id: "doc1",
-      name: "Document 1",
-      type: "PDF",
-      size: "1.2 MB",
-      lastModified: "2024-11-20",
-      status: "Submitted",
-    },
-    {
-      id: "doc2",
-      name: "Document 2",
-      type: "Word",
-      size: "820 KB",
-      lastModified: "2024-11-18",
-      status: "Pending",
-    },
-    {
-      id: "doc3",
-      name: "Document 3",
-      type: "Excel",
-      size: "2.5 MB",
-      lastModified: "2024-11-15",
-      status: "Submitted",
-    },
-  ];
 
   // State for selected document
   const [selectedDoc, setSelectedDoc] = useState("");
@@ -39,7 +13,7 @@ const DocumentDropdown = () => {
   };
 
   // Find details of the selected document
-  const documentDetails = documents.find((doc) => doc.id === selectedDoc);
+
 
   return (
     <Box sx={{ width: "800px", margin: "0 auto", mt: 5 ,}}>
@@ -47,43 +21,43 @@ const DocumentDropdown = () => {
       {/* Dropdown */}
       <FormControl fullWidth>
       
-        <Select value={selectedDoc} onChange={handleDropdownChange}>
-          {documents.map((doc) => (
-            <MenuItem key={doc.id} value={doc.id}>
-              {doc.name} -{" "}
+        <Select value="Personal Histrory Form" >
+          
+            <MenuItem >
+             PErsonal History form
               <Chip
-                label={doc.status}
-                color={doc.status === "Submitted" ? "success" : "warning"}
+                label="status"
+                color={"Submitted" === "Submitted" ? "success" : "warning"}
                 size="small"
               />
             </MenuItem>
-          ))}
+    
         </Select>
       </FormControl>
 
       {/* Display Document Details */}
-      {documentDetails && (
+   
         <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
-          <Typography variant="h6">{documentDetails.name}</Typography>
+          <Typography variant="h6"></Typography>
           <Typography variant="body1">
-            <strong>Type:</strong> {documentDetails.type}
+            <strong>Type:</strong> 
           </Typography>
           <Typography variant="body1">
-            <strong>Size:</strong> {documentDetails.size}
+            <strong>Size:</strong> 
           </Typography>
           <Typography variant="body1">
-            <strong>Last Modified:</strong> {documentDetails.lastModified}
+            <strong>Last Modified:</strong> 
           </Typography>
           <Typography variant="body1">
             <strong>Status:</strong>{" "}
             <Chip
-              label={documentDetails.status}
-              color={documentDetails.status === "Submitted" ? "success" : "warning"}
+              label="Personal History form"
+              color={"Submitted" === "Submitted" ? "success" : "warning"}
               size="small"
             />
           </Typography>
         </Paper>
-      )}
+   
     </Box>
   );
 };
