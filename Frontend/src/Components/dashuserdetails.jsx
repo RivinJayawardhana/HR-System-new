@@ -42,10 +42,11 @@ const DocumentDropdown = () => {
   const documentDetails = documents.find((doc) => doc.id === selectedDoc);
 
   return (
-    <Box sx={{ width: "400px", margin: "0 auto", mt: 5 }}>
+    <Box sx={{ width: "800px", margin: "0 auto", mt: 5 ,}}>
+      <h1>User Documents - Select Documents</h1>
       {/* Dropdown */}
       <FormControl fullWidth>
-        <InputLabel>Select Document</InputLabel>
+      
         <Select value={selectedDoc} onChange={handleDropdownChange}>
           {documents.map((doc) => (
             <MenuItem key={doc.id} value={doc.id}>
