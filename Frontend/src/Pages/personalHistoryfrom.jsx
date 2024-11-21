@@ -92,7 +92,7 @@ export default function Updatestaff() {
 
           </Select>
             
-        <Button type='submit' gradientDuoTone='purpleToBlue'>Update</Button>
+        <Button type='submit' gradientDuoTone='purpleToBlue'>Submit</Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}
