@@ -64,26 +64,26 @@ export default function Updatestaff() {
       
         <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, fullname: e.target.value })
-            } defaultValue={name}/>
+            } />
        
             <TextInput type='text'placeholder='Address'required id='Age'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, age: e.target.value })
-            } defaultValue={age}/>
+            } />
             <TextInput type='text'placeholder='Phone number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, number: e.target.value })
-            } defaultValue={number}/>
+            } />
      <TextInput type='text'placeholder='NIC number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, number: e.target.value })
-            } defaultValue={number}/>
+            } />
              <label>Date of Birth </label>
 
 <TextInput type='date'placeholder='Date of Birth'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, number: e.target.value })
-            } defaultValue={number}/>
+            } />
              <label>Date of Join</label>
             <TextInput type='date'placeholder='Date of Join'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, number: e.target.value })
-            } defaultValue={number}/>
+            } />
 
             <label>CDC Account </label>
              <Select onChange={(e) => setFormData({ ...formData, type: e.target.value })} defaultValue={type}>
