@@ -35,7 +35,7 @@ export const add = async(req,res,next)=>{
         
 });
 
-console.log(newForm);
+
 
       try {
         const savedform = await newForm.save();
