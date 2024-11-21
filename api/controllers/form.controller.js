@@ -13,9 +13,9 @@ export const add = async(req,res,next)=>{
    const address=req.body.address;
    const contactno=req.body.contactno;
    const dateofbirth=req.body.dateofbirth;
-   const NIC=req.body.NIC;
-   const DateofJoin=req.body.NIC;
-   const CDSDetails=req.body.NIC;
+   const NIC=req.body.nic;
+   const DateofJoin=req.body.DateofJoin;
+   const CDSDetails=req.body.CDSDetails;
    const status="Submitted"
    
 

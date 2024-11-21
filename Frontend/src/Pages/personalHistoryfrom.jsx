@@ -36,7 +36,7 @@ export default function Updatestaff() {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/dashboard?tab=staff`);
+        navigate(`/`);
       }
     } catch (error) {
       setPublishError('Something went wrong');
@@ -61,7 +61,7 @@ export default function Updatestaff() {
               setFormData({ ...formData, contactno: e.target.value })
             } />
      <TextInput type='text'placeholder='NIC number'required id='Phone number'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, NIC: e.target.value })
+              setFormData({ ...formData, nic: e.target.value })
             } />
              <label>Date of Birth </label>
 
