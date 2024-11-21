@@ -3,16 +3,30 @@ import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip
 
 const DocumentDropdown = () => {
   // Sample document data with status
-
+  const { currentUser } = useSelector((state) => state.user);
   // State for selected document
-  const [selectedDoc, setSelectedDoc] = useState("");
 
-  // Handle dropdown change
-  const handleDropdownChange = (event) => {
-    setSelectedDoc(event.target.value);
-  };
+  const [formdetails,setformdetails] = useState([])
+  useEffect(() => {
+    const fetchs = async () => {
+      try {
+        const res = await fetch('/api/form/get');
+        const data = await res.json();
+        if (res.ok) {
+          setformdetails(data);
+          console.log(data)
+         
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    if (currentUser.isAdmin) {
+      fetchs();
+    }
+  }, []);
 
-  // Find details of the selected document
+
 
 
   return (
