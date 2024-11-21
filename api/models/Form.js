@@ -8,7 +8,7 @@ const formSchema = new mongoose.Schema({
   dateofbirth: { type: String, required: true },
   NIC: { type: String, required: true },
   DateofJoin: { type: String, required: true },
-  CDSDetails: { type: Boolean, required: true },
+  CDSDetails: { type: String, required: true },
 
   status: { type: String, default: "Pending" }, // Pending, Completed
 

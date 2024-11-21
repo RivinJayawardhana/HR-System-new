@@ -16,6 +16,7 @@ import AdminDashboard from './Components/dashuserdetails';
 
 
 import UserSignIn from './Pages/userlogin';
+import Histryform from './Pages/personalHistoryfrom';
 
 
 
@@ -28,6 +29,8 @@ export default function App() {
        
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/view" element={<AdminDashboard />} />
+        <Route path="/view" element={<AdminDashboard />} />
+        <Route path="/histryform" element={<Histryform />} />
 
      
         <Route path='/userlogin' element={<UserSignIn/>}/>
