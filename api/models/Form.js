@@ -13,5 +13,5 @@ const formSchema = new mongoose.Schema({
   status: { type: String, default: "Pending" }, // Pending, Completed
 
 });
-
-module.exports = mongoose.model("Form", formSchema);
+const Form = mongoose.model('Form',formSchema);
+export default Form;
