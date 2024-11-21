@@ -17,9 +17,14 @@ export default function Updatestaff() {
  
  const handleSubmit = async (e) => {
     
-    formData.append('userId', id);
+   
     e.preventDefault();
+    setFormData({
+        ...formData, // Keep existing form fields
+        userId: id, // Update the current field
+      });
     try {
+      
       const res = await fetch(`/api/form/add`, {
         method: 'POST',
         headers: {

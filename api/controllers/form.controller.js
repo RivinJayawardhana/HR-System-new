@@ -16,7 +16,7 @@ export const add = async(req,res,next)=>{
    const NIC=req.body.nic;
    const DateofJoin=req.body.DateofJoin;
    const CDSDetails=req.body.CDSDetails;
-   const status="Submitted"
+   const status="Submitted";
    
 
   
@@ -34,6 +34,8 @@ export const add = async(req,res,next)=>{
         
         
 });
+
+console.log(newForm);
 
       try {
         const savedform = await newForm.save();
