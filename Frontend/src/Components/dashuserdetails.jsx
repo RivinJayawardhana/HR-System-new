@@ -11,7 +11,24 @@ const DocumentDropdown  = ({ id }) => {
   // State for selected document
 
   const [formdetails,setformdetails] = useState([])
- 
+  useEffect(() => {
+    const fetchs = async () => {
+      try {
+        const res = await fetch(`/api/form/get/${id}`);
+        const data = await res.json();
+        if (res.ok) {
+          setformdetails(data);
+          console.log(data)
+         
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    if (currentUser.isAdmin) {
+      fetchs();
+    }
+  }, []);
 
 
 
