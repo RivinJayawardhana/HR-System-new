@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect,  } from "react";
 import { useNavigate,useParams } from "react-router-dom";
-import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip } from "@mui/material";
+import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip ,Stack,Button } from "@mui/material";
 
 const DocumentDropdown  = ({ id }) => {
   // Sample document data with status
@@ -56,38 +56,56 @@ const DocumentDropdown  = ({ id }) => {
 
       {/* Display Document Details */}
    
-        <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
-          <Typography variant="h6"></Typography>
-          <Typography variant="body1">
-            <strong>Full name: {formdetails.fullname}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong>Address: {formdetails.address}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong>Contact no: {formdetails.contactno}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong>NIC: {formdetails.NIC}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong>Date of birth: {formdetails.dateofbirth}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong> Date of Join: {formdetails.DateofJoin}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong> CDS: {formdetails.CDSDetails}</strong> 
-          </Typography>
-          <Typography variant="body1">
-            <strong>Status: </strong>{" "}
-            <Chip
-              label={`${formdetails.status}`}
-              color={`${formdetails.status}` === "Submitted" ? "success" : "warning"}
-              size="small"
-            />
-          </Typography>
-        </Paper>
+      <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
+      <Typography variant="h6">Form Details</Typography>
+      <Typography variant="body1">
+        <strong>Full name: {formdetails.fullname}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong>Address: {formdetails.address}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong>Contact no: {formdetails.contactno}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong>NIC: {formdetails.NIC}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong>Date of birth: {formdetails.dateofbirth}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong> Date of Join: {formdetails.DateofJoin}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong> CDS: {formdetails.CDSDetails}</strong>
+      </Typography>
+      <Typography variant="body1">
+        <strong>Status: </strong>{" "}
+        <Chip
+          label={`${formdetails.status}`}
+          color={`${formdetails.status}` === "Submitted" ? "success" : "warning"}
+          size="small"
+        />
+      </Typography>
+
+      {/* Buttons Section */}
+      <Stack direction="row" spacing={2} sx={{ mt: 2, justifyContent: "flex-end" }}>
+        <Button 
+          variant="contained" 
+          color="primary" 
+        
+        >
+          Edit
+        </Button>
+        <Button 
+          variant="contained" 
+          color="error" 
+        
+        >
+          Approve
+        </Button>
+      </Stack>
+    </Paper>
    
     </Box>
   );
