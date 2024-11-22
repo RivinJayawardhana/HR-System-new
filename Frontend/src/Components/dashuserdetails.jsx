@@ -45,7 +45,7 @@ const DocumentDropdown  = ({ id }) => {
             <MenuItem >
              PErsonal History form
               <Chip
-                label="Submitted"
+                label={`${formdetails.status}`}
                 color={"Submitted" === "Submitted" ? "success" : "warning"}
                 size="small"
               />
@@ -82,7 +82,7 @@ const DocumentDropdown  = ({ id }) => {
           <Typography variant="body1">
             <strong>Status: </strong>{" "}
             <Chip
-              label="Submitted"
+              label={`${formdetails.status}`}
               color={`${formdetails.status}` === "Submitted" ? "success" : "warning"}
               size="small"
             />
