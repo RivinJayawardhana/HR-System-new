@@ -18,9 +18,7 @@ export const add = async(req,res,next)=>{
    const CDSDetails=req.body.CDSDetails;
    const status="Submitted";
    
-
-  
-      const newForm = new Form({
+ const newForm = new Form({
         userId,
         fullname,
         address,
@@ -29,10 +27,7 @@ export const add = async(req,res,next)=>{
         NIC,
         DateofJoin,
         CDSDetails,
-        status
-        
-        
-        
+        status        
 });
 
 
