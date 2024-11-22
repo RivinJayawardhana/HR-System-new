@@ -4,10 +4,10 @@ import { useEffect,  } from "react";
 import { useNavigate,useParams } from "react-router-dom";
 import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip } from "@mui/material";
 
-const DocumentDropdown = () => {
+const DocumentDropdown  = ({ id }) => {
   // Sample document data with status
   const { currentUser } = useSelector((state) => state.user);
-  const { id } = useParams();
+
   // State for selected document
 
   const [formdetails,setformdetails] = useState([])

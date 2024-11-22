@@ -37,7 +37,7 @@ export default function DashBoard() {
       {tab==='profile' && <DashProfile/>}
       {tab === 'users' && <DashUsers/>}
       {tab === 'staff' && <Dashstaff/>}
-      {tab === 'view'&& id && <AdminDashboard/>}
+      {tab === 'view'&& id && <AdminDashboard id={id} />}
     
 
      
