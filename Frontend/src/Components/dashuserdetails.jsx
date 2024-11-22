@@ -59,16 +59,28 @@ const DocumentDropdown  = ({ id }) => {
         <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
           <Typography variant="h6"></Typography>
           <Typography variant="body1">
-            <strong>Type: {id}</strong> 
+            <strong>Full name: {formdetails.fullname}</strong> 
           </Typography>
           <Typography variant="body1">
-            <strong>Size:</strong> 
+            <strong>Address: {formdetails.address}</strong> 
           </Typography>
           <Typography variant="body1">
-            <strong>Last Modified:</strong> 
+            <strong>Contact no: {formdetails.contactno}</strong> 
           </Typography>
           <Typography variant="body1">
-            <strong>Status:</strong>{" "}
+            <strong>NIC: {formdetails.NIC}</strong> 
+          </Typography>
+          <Typography variant="body1">
+            <strong>Date of birth: {formdetails.dateofbirth}</strong> 
+          </Typography>
+          <Typography variant="body1">
+            <strong> Date of Join: {formdetails.DateofJoin}</strong> 
+          </Typography>
+          <Typography variant="body1">
+            <strong> CDS: {formdetails.CDSDetails}</strong> 
+          </Typography>
+          <Typography variant="body1">
+            <strong>Status: </strong>{" "}
             <Chip
               label="Personal History form"
               color={"Submitted" === "Submitted" ? "success" : "warning"}
