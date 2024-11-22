@@ -103,7 +103,7 @@ return (
                       <span>Request Details</span>
                     </Link>
                   </Table.Cell>
-                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view`}>
+                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
                       <span>View</span>
                     </Link></Table.Cell>
                 
