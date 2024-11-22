@@ -67,14 +67,10 @@ export default function UpdateHform() {
     
    
     e.preventDefault();
-    setFormData({
-        ...formData, // Keep existing form fields
-        userId: id, // Update the current field
-      });
     try {
       
-      const res = await fetch(`/api/form/add`, {
-        method: 'POST',
+      const res = await fetch(`/api/form/update`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
