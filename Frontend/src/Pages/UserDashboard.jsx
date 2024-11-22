@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./UserDashboard.css"; // Import CSS for styling
-import { useParams } from "react-router-dom";
-import { Link , useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const dummyForms = [
   { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
@@ -17,14 +16,21 @@ const UserDashboard = () => {
 
   const handleTileClick = (form) => {
     setSelectedForm(form);
-    navigate(`/histryform/${id}`)
-
   };
 
   const handleCloseModal = () => {
     setSelectedForm(null);
   };
-  console.log(id)
+
+  const handleUpdateClick = () => {
+    // Navigate to update form page with form ID
+    navigate(`/updateform/${id}/${selectedForm.id}`);
+  };
+  const handlesubmit = () => {
+    // Navigate to update form page with form ID
+    navigate(`/histryform/${id}`);
+  };
+
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">User Dashboard</h1>
@@ -46,6 +52,7 @@ const UserDashboard = () => {
         ))}
       </div>
 
+      {/* Modal for displaying selected form details */}
       {selectedForm && (
         <div className="form-modal">
           <div className="modal-content">
@@ -54,6 +61,24 @@ const UserDashboard = () => {
             <p>
               <strong>Status: </strong> {selectedForm.status}
             </p>
+
+            {/* Update button appears only if status is Completed */}
+            {selectedForm.status === "Completed" && (
+              <button
+                className="form-update-btn"
+                onClick={handleUpdateClick}
+              >
+                Update
+              </button>
+            )}
+            {selectedForm.status === "Pending" && (
+              <button
+                className="form-update-btn"
+                onClick={handlesubmit}
+              >
+                Submit
+              </button>
+            )}
             <button className="form-cancel-btn" onClick={handleCloseModal}>
               Close
             </button>
@@ -65,5 +90,3 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
-
-
