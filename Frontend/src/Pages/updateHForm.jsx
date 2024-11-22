@@ -13,6 +13,40 @@ export default function UpdateHform() {
     const [publishError, setPublishError] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
+    const [formdetails,setformdetails] = useState([])
+    const [publishError, setPublishError] = useState(null);
+    const [publishError, setPublishError] = useState(null);
+    const [publishError, setPublishError] = useState(null);
+
+
+
+    useEffect(() => {
+      const fetchs = async () => {
+        try {
+          const res = await fetch(`/api/form/get/${id}`);
+          const data = await res.json();
+          if (res.ok) {
+            setformdetails(data);
+            console.log(data)
+           
+          }
+        } catch (error) {
+          console.log(error.message);
+        }
+      };
+       fetchs();
+     
+    }, []);
+
+
+
+
+
+
+
+
+
+
   
  
  const handleSubmit = async (e) => {
