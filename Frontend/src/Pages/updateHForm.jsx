@@ -14,9 +14,16 @@ export default function UpdateHform() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [formdetails,setformdetails] = useState([])
-    const [publishError, setPublishError] = useState(null);
-    const [publishError, setPublishError] = useState(null);
-    const [publishError, setPublishError] = useState(null);
+    const [userId, setUserId] = useState(""); // User ID (can be fetched or generated)
+  const [fullname, setFullname] = useState("");
+  const [address, setAddress] = useState("");
+  const [contactno, setContactno] = useState("");
+  const [dateofbirth, setDateofbirth] = useState("");
+  const [NIC, setNIC] = useState("");
+  const [DateofJoin, setDateofJoin] = useState("");
+  const [CDSDetails, setCDSDetails] = useState("");
+  const [status, setStatus] = useState(""); // Default status
+  
 
 
 
@@ -26,7 +33,14 @@ export default function UpdateHform() {
           const res = await fetch(`/api/form/get/${id}`);
           const data = await res.json();
           if (res.ok) {
-            setformdetails(data);
+            setFullname(data.fullname);
+            setAddress(data.address);
+            setContactno(data.contactno);
+            setDateofbirth(data.dateofbirth);
+            setNIC(data.NIC);
+            setDateofJoin(data.DateofJoin);
+            setCDSDetails(data.CDSDetails);
+            setStatus(data.status)
             console.log(data)
            
           }
@@ -90,30 +104,30 @@ export default function UpdateHform() {
       
         <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, fullname: e.target.value })
-            
-            } />
+        
+            } defaultValue={fullname} />
        
             <TextInput type='text'placeholder='Address'required id='Age'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, address: e.target.value })
-            } />
+            }  defaultValue={address} />
             <TextInput type='text'placeholder='Phone number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, contactno: e.target.value })
-            } />
+            }  defaultValue={contactno}/>
      <TextInput type='text'placeholder='NIC number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, nic: e.target.value })
-            } />
+            }  defaultValue={NIC} />
              <label>Date of Birth </label>
 
 <TextInput type='date'placeholder='Date of Birth'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, dateofbirth: e.target.value })
-            } />
+            }  defaultValue={dateofbirth} />
              <label>Date of Join</label>
             <TextInput type='date'placeholder='Date of Join'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, DateofJoin: e.target.value })
-            } />
+            }  defaultValue={DateofJoin}/>
 
             <label>CDC Account </label>
-             <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} >
+             <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} defaultValue={CDSDetails} >
             <option value='yes'>yes</option>
             <option value='no'>no</option>
 
