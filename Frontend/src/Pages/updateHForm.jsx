@@ -9,12 +9,12 @@ import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate,useParams } from "react-router-dom";
 
 export default function UpdateHform() {
-    const [formData , setFormData] = useState({});
-    const [publishError, setPublishError] = useState(null);
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const [formdetails,setformdetails] = useState([])
-    const [userId, setUserId] = useState(""); // User ID (can be fetched or generated)
+  const [formData , setFormData] = useState({});
+  const [publishError, setPublishError] = useState(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [formdetails,setformdetails] = useState([])
+  const [userId, setUserId] = useState(""); // User ID (can be fetched or generated)
   const [fullname, setFullname] = useState("");
   const [address, setAddress] = useState("");
   const [contactno, setContactno] = useState("");
@@ -25,9 +25,7 @@ export default function UpdateHform() {
   const [status, setStatus] = useState(""); // Default status
   
 
-
-
-    useEffect(() => {
+  useEffect(() => {
       const fetchs = async () => {
         try {
           const res = await fetch(`/api/form/get/${id}`);
@@ -53,21 +51,9 @@ export default function UpdateHform() {
     }, []);
 
 
-
-
-
-
-
-
-
-
-  
- 
  const handleSubmit = async (e) => {
-    
-   
-    e.preventDefault();
-    try {
+      e.preventDefault();
+try {
       
       const res = await fetch(`/api/form/update`, {
         method: 'PUT',
@@ -91,6 +77,8 @@ export default function UpdateHform() {
       setPublishError('Something went wrong');
     }
   };
+
+
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
         <h1 className="text-center text-3xl my-7 font-semibold">Personal History Form</h1>
