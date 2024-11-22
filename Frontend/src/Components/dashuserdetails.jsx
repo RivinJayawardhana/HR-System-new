@@ -11,24 +11,8 @@ const DocumentDropdown = () => {
   // State for selected document
 
   const [formdetails,setformdetails] = useState([])
-  useEffect(() => {
-    const fetchs = async () => {
-      try {
-        const res = await fetch('/api/form/get');
-        const data = await res.json();
-        if (res.ok) {
-          setformdetails(data);
-          console.log(data)
-         
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    if (currentUser.isAdmin) {
-      fetchs();
-    }
-  }, []);
+ 
+
 
 
 
@@ -58,7 +42,7 @@ const DocumentDropdown = () => {
         <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
           <Typography variant="h6"></Typography>
           <Typography variant="body1">
-            <strong>Type:</strong> 
+            <strong>Type: {id}</strong> 
           </Typography>
           <Typography variant="body1">
             <strong>Size:</strong> 

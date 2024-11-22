@@ -5,18 +5,27 @@ import DashProfile from "../Components/DashProfile";
 import DashUsers from "../Components/DashUsers";
 import Dashstaff from "../Components/Dashstaff";
 import AdminDashboard from "../Components/dashuserdetails";
+import { useNavigate,useParams } from "react-router-dom";
 
 
 
 export default function DashBoard() {
   const location = useLocation();
   const[tab,setTab]= useState();
+  const[id,setid]= useState();
+
+ 
 
   useEffect(()=>{
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
+    const idfromurl = urlParams.get('id');
+ 
     if(tabFromUrl){
       setTab(tabFromUrl)
+    }
+    if(tabFromUrl){
+      setid(idfromurl)
     }
   },[location.search]);
   
