@@ -82,8 +82,8 @@ const DocumentDropdown  = ({ id }) => {
           <Typography variant="body1">
             <strong>Status: </strong>{" "}
             <Chip
-              label="Personal History form"
-              color={"Submitted" === "Submitted" ? "success" : "warning"}
+              label="Submitted"
+              color={`${formdetails.status}` === "Submitted" ? "success" : "warning"}
               size="small"
             />
           </Typography>
