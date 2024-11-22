@@ -7,6 +7,7 @@ import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip
 const DocumentDropdown = () => {
   // Sample document data with status
   const { currentUser } = useSelector((state) => state.user);
+  const { id } = useParams();
   // State for selected document
 
   const [formdetails,setformdetails] = useState([])
