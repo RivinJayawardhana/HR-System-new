@@ -17,6 +17,7 @@ import AdminDashboard from './Components/dashuserdetails';
 
 import UserSignIn from './Pages/userlogin';
 import Histryform from './Pages/personalHistoryfrom';
+import UpdateHform from './Pages/updateHForm';
 
 
 
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/view" element={<AdminDashboard />} />
         <Route path="/view" element={<AdminDashboard />} />
         <Route path="/histryform/:id" element={<Histryform />} />
+        <Route path="/updateform/:id" element={<UpdateHform />} />
 
      
         <Route path='/userlogin' element={<UserSignIn/>}/>

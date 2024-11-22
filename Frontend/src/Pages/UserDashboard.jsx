@@ -24,7 +24,7 @@ const UserDashboard = () => {
 
   const handleUpdateClick = () => {
     // Navigate to update form page with form ID
-    navigate(`/updateform/${id}/${selectedForm.id}`);
+    navigate(`/updateform/${id}`);
   };
   const handlesubmit = () => {
     // Navigate to update form page with form ID
