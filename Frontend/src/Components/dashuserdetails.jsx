@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useEffect,  } from "react";
 import { useNavigate,useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip ,Stack,Button } from "@mui/material";
 
 const DocumentDropdown  = ({ id }) => {
@@ -90,13 +91,16 @@ const DocumentDropdown  = ({ id }) => {
 
       {/* Buttons Section */}
       <Stack direction="row" spacing={2} sx={{ mt: 2, justifyContent: "flex-end" }}>
+
+        <Link to="/">
         <Button 
           variant="contained" 
           color="primary" 
         
         >
-          Edit
+       Edit
         </Button>
+        </Link>
         <Button 
           variant="contained" 
           color="error" 
