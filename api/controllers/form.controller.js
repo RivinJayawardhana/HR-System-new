@@ -49,7 +49,7 @@ export const add = async(req,res,next)=>{
 
 export const Getform= async(req,res,next)=>{
     const userId= req.params.id;
-    console.log(userId);
+   // console.log(userId);
     Form.findOne({userId:userId}).then((Form)=>{
   
       if (Form){
@@ -63,3 +63,32 @@ export const Getform= async(req,res,next)=>{
   })
   
   }
+
+
+  export const updateform= async (req, res, next) => {
+      console.log(req.body.userId)
+    try {
+    
+      const updateform = await Form.findByIdAndUpdate(
+        req.params.Id,
+        {
+          $set: {
+             userId:req.body.userId,
+             fullname:req.body.fullname,
+             address:req.body.address,
+             contactno:req.body.contactno,
+             dateofbirth:req.body.dateofbirth,
+             NIC:req.body.nic,
+             DateofJoin:req.body.DateofJoin,
+             CDSDetails:req.body.CDSDetails,
+             status:"Submitted",
+  
+          },
+        },
+        { new: true }
+      );
+      res.status(200).json(updateform);
+    } catch (error) {
+      next(error);
+    }
+  };

@@ -14,7 +14,7 @@ export default function UpdateHform() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [formdetails,setformdetails] = useState([])
-  const [userId, setUserId] = useState(""); // User ID (can be fetched or generated)
+  const [Id, setId] = useState(""); // User ID (can be fetched or generated)
   const [fullname, setFullname] = useState("");
   const [address, setAddress] = useState("");
   const [contactno, setContactno] = useState("");
@@ -40,6 +40,8 @@ export default function UpdateHform() {
             setCDSDetails(data.CDSDetails);
             setStatus(data.status)
             console.log(data)
+            setId(data._id)
+            setFormData({ ...formData, userId: id});
            
           }
         } catch (error) {
@@ -53,9 +55,10 @@ export default function UpdateHform() {
 
  const handleSubmit = async (e) => {
       e.preventDefault();
+      
 try {
       
-      const res = await fetch(`/api/form/update`, {
+      const res = await fetch(`/api/form/update/${Id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +74,7 @@ try {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/`);
+        navigate(`/userdash/${id}`);
       }
     } catch (error) {
       setPublishError('Something went wrong');
