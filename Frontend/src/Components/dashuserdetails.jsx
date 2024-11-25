@@ -92,7 +92,7 @@ const DocumentDropdown  = ({ id }) => {
       {/* Buttons Section */}
       <Stack direction="row" spacing={2} sx={{ mt: 2, justifyContent: "flex-end" }}>
 
-        <Link to="/">
+        <Link to={`/updateform/${id}`}>
         <Button 
           variant="contained" 
           color="primary" 
