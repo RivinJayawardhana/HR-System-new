@@ -77,7 +77,8 @@ try {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/userdash/${id}`);
+        //navigate(`/userdash/${id}`);
+        alert("Updated")
       }
     } catch (error) {
       setPublishError('Something went wrong');

@@ -44,7 +44,7 @@ const DocumentDropdown  = ({ id }) => {
         <Select value="Personal Histrory Form" >
           
             <MenuItem >
-             PErsonal History form
+            Personal Histrory Form
               <Chip
                 label={`${formdetails.status}`}
                 color={"Submitted" === "Submitted" ? "success" : "warning"}
