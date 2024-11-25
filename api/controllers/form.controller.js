@@ -66,11 +66,12 @@ export const Getform= async(req,res,next)=>{
 
 
   export const updateform= async (req, res, next) => {
-      console.log(req.body.userId)
+      console.log(req.body)
+      console.log(req.params.fid)
     try {
     
       const updateform = await Form.findByIdAndUpdate(
-        req.params.Id,
+        req.params.fid,
         {
           $set: {
              userId:req.body.userId,
@@ -90,5 +91,6 @@ export const Getform= async(req,res,next)=>{
       res.status(200).json(updateform);
     } catch (error) {
       next(error);
+      console.log(error)
     }
   };

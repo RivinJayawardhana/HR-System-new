@@ -14,7 +14,7 @@ export default function UpdateHform() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [formdetails,setformdetails] = useState([])
-  const [Id, setId] = useState(""); // User ID (can be fetched or generated)
+  const [fid, setfid] = useState(null); // User ID (can be fetched or generated)
   const [fullname, setFullname] = useState("");
   const [address, setAddress] = useState("");
   const [contactno, setContactno] = useState("");
@@ -31,6 +31,7 @@ export default function UpdateHform() {
           const res = await fetch(`/api/form/get/${id}`);
           const data = await res.json();
           if (res.ok) {
+            setfid(data._id);
             setFullname(data.fullname);
             setAddress(data.address);
             setContactno(data.contactno);
@@ -39,9 +40,10 @@ export default function UpdateHform() {
             setDateofJoin(data.DateofJoin);
             setCDSDetails(data.CDSDetails);
             setStatus(data.status)
-            console.log(data)
-            setId(data._id)
+            
+           
             setFormData({ ...formData, userId: id});
+           
            
           }
         } catch (error) {
@@ -50,15 +52,16 @@ export default function UpdateHform() {
       };
        fetchs();
      
-    }, []);
+    }, [fid]);
 
 
  const handleSubmit = async (e) => {
       e.preventDefault();
+     console.log(fid);
       
 try {
       
-      const res = await fetch(`/api/form/update/${Id}`, {
+      const res = await fetch(`/api/form/update/${fid}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +91,7 @@ try {
         <form className="flex flex-col  gap-4" onSubmit={handleSubmit}>
         
        
-      
+
         <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, fullname: e.target.value })
         
