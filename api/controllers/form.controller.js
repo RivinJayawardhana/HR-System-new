@@ -66,8 +66,7 @@ export const Getform= async(req,res,next)=>{
 
 
   export const updateform= async (req, res, next) => {
-      console.log(req.body)
-      console.log(req.params.id)
+     
     try {
     
       const updateform = await Form.findByIdAndUpdate(
