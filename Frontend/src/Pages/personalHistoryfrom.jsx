@@ -54,7 +54,7 @@ export default function Updatestaff() {
         
        
       
-        <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
+      <TextInput type='text'placeholder='Full Name'required id='Member Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, fullname: e.target.value })
             
             } />
@@ -65,12 +65,12 @@ export default function Updatestaff() {
             <TextInput type='text'placeholder='Phone number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, contactno: e.target.value })
             } />
-     <TextInput type='text'placeholder='NIC number'required id='Phone number'className='flex-1'  onChange={(e) =>
+      <TextInput type='text'placeholder='NIC number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, nic: e.target.value })
             } />
              <label>Date of Birth </label>
 
-<TextInput type='date'placeholder='Date of Birth'required id='Phone number'className='flex-1'  onChange={(e) =>
+      <TextInput type='date'placeholder='Date of Birth'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, dateofbirth: e.target.value })
             } />
              <label>Date of Join</label>

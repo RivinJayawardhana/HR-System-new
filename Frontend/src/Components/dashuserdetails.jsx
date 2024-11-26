@@ -6,111 +6,125 @@ import { Link } from "react-router-dom";
 import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip ,Stack,Button } from "@mui/material";
 
 const DocumentDropdown  = ({ id }) => {
-  // Sample document data with status
-  const { currentUser } = useSelector((state) => state.user);
+  const formTypes = [
+    {
+      id: "personal_history",
+      name: "Personal History Form",
+      apiEndpoint: `api/form/get/${id}`,
+      fields: ["fullname", "address", "contactno", "NIC", "dateofbirth", "status"],
+    },
+    {
+      id: "employment_form",
+      name: "Employment Form",
+      apiEndpoint: "/api/employment-form",
+      fields: ["employeeId", "jobTitle", "department", "dateofJoin", "status"],
+    },
+    {
+      id: "education_details",
+      name: "Education Details Form",
+      apiEndpoint: "/api/education-details",
+      fields: ["schoolName", "degree", "yearOfGraduation", "GPA", "status"],
+    },
+  ];
 
-  // State for selected document
+  // State for selected form type
+  const [selectedForm, setSelectedForm] = useState(formTypes[0].id);
 
-  const [formdetails,setformdetails] = useState([])
+  // State for form details
+  const [formDetails, setFormDetails] = useState(null);
+
+  // Fetch form details when the selected form type changes
   useEffect(() => {
-    const fetchs = async () => {
+    const fetchFormDetails = async () => {
       try {
-        const res = await fetch(`/api/form/get/${id}`);
+        const selectedFormType = formTypes.find((form) => form.id === selectedForm);
+        const res = await fetch(selectedFormType.apiEndpoint);
         const data = await res.json();
         if (res.ok) {
-          setformdetails(data);
-          console.log(data)
-         
+          setFormDetails(data);
+        } else {
+          console.error("Failed to fetch form details");
         }
       } catch (error) {
-        console.log(error.message);
+        console.error("Error:", error.message);
       }
     };
-    if (currentUser.isAdmin) {
-      fetchs();
-    }
-  }, []);
 
+    fetchFormDetails();
+  }, [selectedForm]);
 
-
-
+  const handleSelectChange = (event) => {
+    setSelectedForm(event.target.value);
+    setFormDetails(null); // Clear form details while fetching new data
+  };
 
   return (
-    <Box sx={{ width: "800px", margin: "0 auto", mt: 5 ,}}>
-      <h1>User Documents - Select Documents</h1>
-      {/* Dropdown */}
-      <FormControl fullWidth>
-      
-        <Select value="Personal Histrory Form" >
-          
-            <MenuItem >
-            Personal Histrory Form
-              <Chip
-                label={`${formdetails.status}`}
-                color={"Submitted" === "Submitted" ? "success" : "warning"}
-                size="small"
-              />
+    <Box sx={{ width: "800px", margin: "0 auto", mt: 5 }}>
+      <Typography variant="h4" component="h1">
+        User Documents - Select Documents
+      </Typography>
+
+      {/* Dropdown for selecting form type */}
+      <FormControl fullWidth sx={{ mt: 3 }}>
+        <InputLabel id="form-select-label">Select Document</InputLabel>
+        <Select
+          labelId="form-select-label"
+          value={selectedForm}
+          onChange={handleSelectChange}
+        >
+          {formTypes.map((form) => (
+            <MenuItem key={form.id} value={form.id}>
+              {form.name}
             </MenuItem>
-    
+          ))}
         </Select>
       </FormControl>
 
-      {/* Display Document Details */}
-   
-      <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
-      <Typography variant="h6">Form Details</Typography>
-      <Typography variant="body1">
-        <strong>Full name: {formdetails.fullname}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Address: {formdetails.address}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Contact no: {formdetails.contactno}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>NIC: {formdetails.NIC}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Date of birth: {formdetails.dateofbirth}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong> Date of Join: {formdetails.DateofJoin}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong> CDS: {formdetails.CDSDetails}</strong>
-      </Typography>
-      <Typography variant="body1">
-        <strong>Status: </strong>{" "}
-        <Chip
-          label={`${formdetails.status}`}
-          color={`${formdetails.status}` === "Submitted" ? "success" : "warning"}
-          size="small"
-        />
-      </Typography>
+      {/* Display form details */}
+      {formDetails ? (
+        <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
+          <Typography variant="h6">Form Details</Typography>
+          {formTypes
+            .find((form) => form.id === selectedForm)
+            .fields.map((field) => (
+              <Typography key={field} variant="body1">
+                <strong>{field.replace(/([A-Z])/g, " $1")}: </strong> {formDetails[field]}
+              </Typography>
+            ))}
 
-      {/* Buttons Section */}
-      <Stack direction="row" spacing={2} sx={{ mt: 2, justifyContent: "flex-end" }}>
+          {/* Status with chip */}
+          {formDetails.status && (
+            <Typography variant="body1">
+              <strong>Status:</strong>{" "}
+              <Chip
+                label={formDetails.status}
+                color={formDetails.status === "Submitted" ? "success" : "warning"}
+                size="small"
+              />
+            </Typography>
+          )}
 
-        <Link to={`/updateform/${id}`}>
-        <Button 
-          variant="contained" 
-          color="primary" 
-        
-        >
-       Edit
-        </Button>
-        </Link>
-        <Button 
-          variant="contained" 
-          color="error" 
-        
-        >
-          Approve
-        </Button>
-      </Stack>
-    </Paper>
-   
+          {/* Buttons Section */}
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ mt: 2, justifyContent: "flex-end" }}
+          >
+            <Link to={`/updateform/${selectedForm}`}>
+              <Button variant="contained" color="primary">
+                Edit
+              </Button>
+            </Link>
+            <Button variant="contained" color="error">
+              Approve
+            </Button>
+          </Stack>
+        </Paper>
+      ) : (
+        <Typography variant="body1" sx={{ mt: 3 }}>
+          Loading form details...
+        </Typography>
+      )}
     </Box>
   );
 };
