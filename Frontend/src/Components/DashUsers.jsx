@@ -81,7 +81,7 @@ return (
             <Table.HeadCell>Request Documents</Table.HeadCell>
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
-            <Table.HeadCell>Edit</Table.HeadCell>
+     
           </Table.Head>
           {Staffmembers
             .filter((members) => {
@@ -106,12 +106,7 @@ return (
                   <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
                       <span>View</span>
                     </Link></Table.Cell>
-                
-                  <Table.Cell>
-                    <Link className="text-teal-500 hover:underline" to={`/updatestaff/${members._id}`}>
-                      <span>Edit</span>
-                    </Link>
-                  </Table.Cell>
+             
                   <Table.Cell>
                     <span
                       className="font-medium text-red-500 hover:underline cursor-pointer"
