@@ -10,7 +10,12 @@ const formSchema = new mongoose.Schema({
   DateofJoin: { type: String, required: true },
   CDSDetails: { type: String, required: true },
 
-  status: { type: String, default: "Pending" }, // Pending, Completed
+  status: { type: String, default: "Pending" },
+  profilePicture:{
+    type:String,
+    default:"none"
+},
+// Pending, Completed
 
 });
 const Form = mongoose.model('Form',formSchema);
