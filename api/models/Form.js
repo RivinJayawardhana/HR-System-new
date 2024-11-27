@@ -11,7 +11,7 @@ const formSchema = new mongoose.Schema({
   CDSDetails: { type: String, required: true },
 
   status: { type: String, default: "Pending" },
-  profilePicture:{
+  document1:{
     type:String,
     default:"none"
 },
