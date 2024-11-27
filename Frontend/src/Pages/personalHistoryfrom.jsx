@@ -3,6 +3,7 @@ import { useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "../firebase";
+import { CircularProgressbar } from 'react-circular-progressbar';
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function Updatestaff() {
@@ -74,7 +75,7 @@ export default function Updatestaff() {
                 "state_changed",
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    setUploadProgress(progress);
+                    setImageUploadProgress(progress);
                 },
                 (error) => {
                     console.error("File upload error:", error);

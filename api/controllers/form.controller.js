@@ -17,6 +17,7 @@ export const add = async(req,res,next)=>{
    const DateofJoin=req.body.DateofJoin;
    const CDSDetails=req.body.CDSDetails;
    const status="Submitted";
+   const document1=req.body.document1;
    
  const newForm = new Form({
         userId,
@@ -27,7 +28,8 @@ export const add = async(req,res,next)=>{
         NIC,
         DateofJoin,
         CDSDetails,
-        status        
+        status,
+        document1        
 });
 
 
@@ -82,6 +84,8 @@ export const Getform= async(req,res,next)=>{
              DateofJoin:req.body.DateofJoin,
              CDSDetails:req.body.CDSDetails,
              status:"Submitted",
+             document1:req.body.document1,
+
   
           },
         },
