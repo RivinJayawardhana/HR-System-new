@@ -81,6 +81,7 @@ return (
             <Table.HeadCell>Request Documents</Table.HeadCell>
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
+            <Table.HeadCell>Send mail</Table.HeadCell>
      
           </Table.Head>
           {Staffmembers
@@ -116,6 +117,17 @@ return (
                       }}
                     >
                       Delete
+                    </span>
+                  </Table.Cell>
+                  <Table.Cell>
+                    <span
+                      className="font-medium text-red-500 hover:underline cursor-pointer"
+                      onClick={() => {
+                        setShowModel(true);
+                        setmemberIdToDelete(members._id);
+                      }}
+                    >
+                      Send Mail
                     </span>
                   </Table.Cell>
                  
