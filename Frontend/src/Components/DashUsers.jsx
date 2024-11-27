@@ -82,6 +82,7 @@ return (
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
             <Table.HeadCell>Send mail</Table.HeadCell>
+            <Table.HeadCell>Edit</Table.HeadCell>
      
           </Table.Head>
           {Staffmembers
@@ -130,6 +131,10 @@ return (
                       Send Mail
                     </span>
                   </Table.Cell>
+                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
+                      <span>Edit</span>
+                    </Link></Table.Cell>
+             
                  
                 </Table.Row>
               </Table.Body>
