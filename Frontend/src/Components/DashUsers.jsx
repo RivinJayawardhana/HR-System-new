@@ -82,7 +82,7 @@ return (
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
      
-          </Table.Head>6+
+          </Table.Head>
           {Staffmembers
             .filter((members) => {
               // Filter based on search term and selected staff type
