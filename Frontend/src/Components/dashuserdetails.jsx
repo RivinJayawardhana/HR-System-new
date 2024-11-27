@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useEffect,  } from "react";
-import { useNavigate,useParams } from "react-router-dom";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip ,Stack,Button } from "@mui/material";
+import { MenuItem, Select, FormControl, InputLabel, Box, Typography, Paper, Chip, Stack, Button } from "@mui/material";
 
-const DocumentDropdown  = ({ id }) => {
+const DocumentDropdown = ({ id }) => {
   const formTypes = [
     {
       id: "personal_history",
       name: "Personal History Form",
       apiEndpoint: `api/form/get/${id}`,
-      fields: ["fullname", "address", "contactno", "NIC", "dateofbirth", "status"],
+      fields: ["fullname", "address", "contactno", "NIC", "dateofbirth", "status", "document1"],
     },
     {
       id: "employment_form",
@@ -27,13 +25,9 @@ const DocumentDropdown  = ({ id }) => {
     },
   ];
 
-  // State for selected form type
   const [selectedForm, setSelectedForm] = useState(formTypes[0].id);
-
-  // State for form details
   const [formDetails, setFormDetails] = useState(null);
 
-  // Fetch form details when the selected form type changes
   useEffect(() => {
     const fetchFormDetails = async () => {
       try {
@@ -55,7 +49,7 @@ const DocumentDropdown  = ({ id }) => {
 
   const handleSelectChange = (event) => {
     setSelectedForm(event.target.value);
-    setFormDetails(null); // Clear form details while fetching new data
+    setFormDetails(null);
   };
 
   return (
@@ -64,7 +58,6 @@ const DocumentDropdown  = ({ id }) => {
         User Documents - Select Documents
       </Typography>
 
-      {/* Dropdown for selecting form type */}
       <FormControl fullWidth sx={{ mt: 3 }}>
         <InputLabel id="form-select-label">Select Document</InputLabel>
         <Select
@@ -80,7 +73,6 @@ const DocumentDropdown  = ({ id }) => {
         </Select>
       </FormControl>
 
-      {/* Display form details */}
       {formDetails ? (
         <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
           <Typography variant="h6">Form Details</Typography>
@@ -88,11 +80,22 @@ const DocumentDropdown  = ({ id }) => {
             .find((form) => form.id === selectedForm)
             .fields.map((field) => (
               <Typography key={field} variant="body1">
-                <strong>{field.replace(/([A-Z])/g, " $1")}: </strong> {formDetails[field]}
+                <strong>{field.replace(/([A-Z])/g, " $1")}: </strong>
+                {field === "document1" ? (
+                  <a
+                    href={formDetails[field]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none", color: "#1976d2" }}
+                  >
+                    View Document
+                  </a>
+                ) : (
+                  formDetails[field]
+                )}
               </Typography>
             ))}
 
-          {/* Status with chip */}
           {formDetails.status && (
             <Typography variant="body1">
               <strong>Status:</strong>{" "}
@@ -104,7 +107,6 @@ const DocumentDropdown  = ({ id }) => {
             </Typography>
           )}
 
-          {/* Buttons Section */}
           <Stack
             direction="row"
             spacing={2}
