@@ -38,30 +38,15 @@ export const add = async(req,res,next)=>{
 export const sendmail = async(req,res,next)=>{
 
     
-  const Staffmembername=req.body.Staffmembername;
+  const body=req.body.description;
+  const mail=req.body.email;
+  const subject=req.body.subject;
   
 
- 
- const username=req.body.username;
- 
- const password=req.body.password;
- 
-     const newstaffmember = new staff({
-       Staffmembername,
-       username,
-       password,
-       
-       
-});
-
-     try {
-       const savedmember = await newstaffmember.save();
-       res.status(201).json(savedmember);
-     
-     } catch (error) {
-       next(error);
-      
-     }
+  
+console.log(body);
+console.log(mail);
+console.log(subject);
 
 
 
