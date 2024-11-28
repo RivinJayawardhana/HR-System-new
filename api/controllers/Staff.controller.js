@@ -35,7 +35,37 @@ export const add = async(req,res,next)=>{
 
 
 }
+export const sendmail = async(req,res,next)=>{
 
+    
+  const Staffmembername=req.body.Staffmembername;
+  
+
+ 
+ const username=req.body.username;
+ 
+ const password=req.body.password;
+ 
+     const newstaffmember = new staff({
+       Staffmembername,
+       username,
+       password,
+       
+       
+});
+
+     try {
+       const savedmember = await newstaffmember.save();
+       res.status(201).json(savedmember);
+     
+     } catch (error) {
+       next(error);
+      
+     }
+
+
+
+}
 
 export const usersignin = async(req,res,next)=>{
   const {username,password} = req.body;
