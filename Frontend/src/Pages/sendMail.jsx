@@ -8,12 +8,14 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from "react-router-dom";
 
-export default function SendMail() {
+ const SendMail= ({ email }) =>{
   const[file,setFile]=useState(null);
   const[imageUploadProgress,setImageUploadProgress] = useState(null);
   const[imageUploadError,setImageUploadError] = useState(null);
   const [formData , setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
+
+  console.log(email)
 
   const navigate = useNavigate();
  
@@ -116,3 +118,5 @@ export default function SendMail() {
     </div>
   )
 }
+
+export default SendMail;
