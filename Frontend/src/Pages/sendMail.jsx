@@ -18,11 +18,13 @@ import 'react-quill/dist/quill.snow.css';
   const [publishError, setPublishError] = useState(null);
 
   console.log(email)
+  
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormData({ ...formData, email: email })
     try {
       const res = await fetch('/api/staff/sendmail', {
         method: 'POST',
@@ -40,7 +42,7 @@ import 'react-quill/dist/quill.snow.css';
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/dashboard?tab=users`);
+        //navigate(`/dashboard?tab=users`);
       }
     } catch (error) {
       setPublishError('Something went wrong');
@@ -62,15 +64,12 @@ import 'react-quill/dist/quill.snow.css';
 
         <TextInput type='text'placeholder='email'required id='email'className='flex-1'  value={email}
                           readOnly
-                          onChange={(value) => {
-    
-                            setFormData({ ...formData, email:  e.target.value });
-                          }}
+                         
              
             />
 
 <TextInput type='text'placeholder='Subject'required id='email'className='flex-1' 
-onChange={(value) => {
+onChange={(e) => {
     
     setFormData({ ...formData, subject:  e.target.value });
   }}
@@ -82,8 +81,8 @@ onChange={(value) => {
           theme="snow"
           placeholder="Description..."
           className="h-52 mb-12"
-          onChange={(value) => {
-            const sanitizedValue = value.replace(/<\/?[^>]+(>|$)/g, "");
+          onChange={(e) => {
+            const sanitizedValue = e.replace(/<\/?[^>]+(>|$)/g, "");
             setFormData({ ...formData, description: sanitizedValue });
           }}
         />
