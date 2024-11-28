@@ -62,7 +62,7 @@ export default function DashUsers() {
 return (
   <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
   
-    <input
+    <inputj
         type="text"
         placeholder="Search members.."
         value={searchTerm}
@@ -120,17 +120,9 @@ return (
                       Delete
                     </span>
                   </Table.Cell>
-                  <Table.Cell>
-                    <span
-                      className="font-medium text-red-500 hover:underline cursor-pointer"
-                      onClick={() => {
-                        setShowModel(true);
-                        setmemberIdToDelete(members._id);
-                      }}
-                    >
-                      Send Mail
-                    </span>
-                  </Table.Cell>
+                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members.username}`}>
+                      <span>send mail</span>
+                    </Link></Table.Cell>
                   <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
                       <span>Edit</span>
                     </Link></Table.Cell>
