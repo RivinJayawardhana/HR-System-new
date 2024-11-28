@@ -11,6 +11,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
  const SendMail= ({ email }) =>{
+    
   const[file,setFile]=useState(null);
   const[imageUploadProgress,setImageUploadProgress] = useState(null);
   const[imageUploadError,setImageUploadError] = useState(null);
