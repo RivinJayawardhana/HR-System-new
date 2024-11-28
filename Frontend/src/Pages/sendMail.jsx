@@ -33,6 +33,10 @@ import 'react-quill/dist/quill.snow.css';
             />
 
 <TextInput type='text'placeholder='Subject'required id='email'className='flex-1' 
+onChange={(value) => {
+    
+    setFormData({ ...formData, subject:  e.target.value });
+  }}
              
             />
             
