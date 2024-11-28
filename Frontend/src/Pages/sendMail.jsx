@@ -7,6 +7,8 @@ import { app } from "../firebase";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from "react-router-dom";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
  const SendMail= ({ email }) =>{
   const[file,setFile]=useState(null);
@@ -19,96 +21,29 @@ import { useNavigate } from "react-router-dom";
 
   const navigate = useNavigate();
  
-  const handleUploadImage = () =>{
-    try {
-      if(!file){
-        setImageUploadError('please select an image');
-        return;
-      }
-      setImageUploadError(null);
-      const storage = getStorage(app);
-      const fileName = new Date().getTime()+'-'+file.name;
-      const storageRef = ref(storage,fileName);
-      const uploadTask = uploadBytesResumable(storageRef,file);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageUploadProgress(progress.toFixed(0));
-        },
-        
-        (error) => {
-          setImageUploadError("Image upload failed");
-          console.error("Upload error:", error);
-          setImageUploadProgress(null);
-         
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>{
-            setImageUploadProgress(null);
-            setImageUploadError(null);
-            setFormData({...formData, image: downloadURL});
-          }
-           
-          );
-        }
-      );
-
-    } catch (error) {
-      setImageUploadError('Failed to upload image');
-      setImageUploadProgress(null);
-      console.log(error);
-    }
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await fetch('/api/staff/add', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setPublishError(data.message);
-        return;
-      }
-      console.log(formData);
-
-      if (res.ok) {
-        setPublishError(null);
-        navigate(`/dashboard?tab=profile`);
-      }
-    } catch (error) {
-      setPublishError('Something went wrong');
-    }
-  };
+ 
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
         <h1 className="text-center text-3xl my-7 font-semibold">Add Staff Member</h1>
-        <form className="flex flex-col  gap-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col  gap-4" >
+
+        <TextInput type='text'placeholder='email'required id='email'className='flex-1'  value={email}
+                          readOnly
+             
+            />
         
-         
-        
-       
-        <TextInput type='text'placeholder='Member Name'required id='Member Name'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, Staffmembername: e.target.value })
-            }/>
-       
-           
-            <TextInput type='text'placeholder='User Name'required id='User Name'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, username: e.target.value })
-            }/>
-<TextInput type='text'placeholder='Password'required id='Password'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
-            }/>
-           
+        <ReactQuill
+          theme="snow"
+          placeholder="Description..."
+          className="h-52 mb-12"
+          onChange={(value) => {
+            const sanitizedValue = value.replace(/<\/?[^>]+(>|$)/g, "");
+            setFormData({ ...formData, description: sanitizedValue });
+          }}
+        />
+    
             
-            
-        <Button type='submit' gradientDuoTone='purpleToBlue'>Add</Button>
+        <Button type='submit' gradientDuoTone='purpleToBlue'>Send</Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}
