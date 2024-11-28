@@ -23,8 +23,8 @@ import 'react-quill/dist/quill.snow.css';
  
  
   return (
-    <div className="p-3 max-w-3xl mx-auto min-h-screen">
-        <h1 className="text-center text-3xl my-7 font-semibold">Add Staff Member</h1>
+    <div className="p-3 max-w-3xl mx-auto min-h-screen" style={{width:"50%"}}>
+        <h1 className="text-center text-3xl my-7 font-semibold">Send Mail</h1>
         <form className="flex flex-col  gap-4" >
 
         <TextInput type='text'placeholder='email'required id='email'className='flex-1'  value={email}
