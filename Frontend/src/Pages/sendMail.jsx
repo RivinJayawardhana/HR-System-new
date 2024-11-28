@@ -1,6 +1,6 @@
 
 import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 'react-quill/dist/quill.snow.css';
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
 import { app } from "../firebase";
@@ -20,12 +20,15 @@ import 'react-quill/dist/quill.snow.css';
 
   console.log(email)
   
+  useEffect(() => {
+    setFormData({ ...formData, email: email })
+  }, [email]);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData({ ...formData, email: email })
+   
     try {
       const res = await fetch('/api/staff/sendmail', {
         method: 'POST',
