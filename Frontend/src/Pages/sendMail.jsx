@@ -24,7 +24,7 @@ import 'react-quill/dist/quill.snow.css';
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('/api/user/sendmail', {
+      const res = await fetch('/api/staff/sendmail', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
