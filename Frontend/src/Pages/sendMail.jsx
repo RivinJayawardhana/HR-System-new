@@ -15,8 +15,8 @@ import 'react-quill/dist/quill.snow.css';
   const[file,setFile]=useState(null);
   const[imageUploadProgress,setImageUploadProgress] = useState(null);
   const[imageUploadError,setImageUploadError] = useState(null);
-  const [formData , setFormData] = useState({});
-  const [publishError, setPublishError] = useState(null);
+  const[formData , setFormData] = useState({});
+  const[publishError, setPublishError] = useState(null);
 
   console.log(email)
   

@@ -3,6 +3,7 @@ import staff from "../models/staff.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import nodemailer from 'nodemailer';
 
 export const add = async(req,res,next)=>{
 
@@ -38,15 +39,35 @@ export const add = async(req,res,next)=>{
 export const sendmail = async(req,res,next)=>{
 
     
-  const body=req.body.description;
-  const mail=req.body.email;
+  const text=req.body.description;
+  const to=req.body.email;
   const subject=req.body.subject;
-  
+  console.log(to)
 
-  
-console.log(body);
-console.log(mail);
-console.log(subject);
+  const transporter = nodemailer.createTransport({
+    service: 'gmail', // Use your email service (e.g., Gmail, Outlook, etc.)
+    auth: {
+      user: "pesara.us@gmail.com", // Your email address
+      pass: "", // Your email password or app password
+    },
+  });
+
+  // Email options
+  const mailOptions = {
+    from: "pesara.us@gmail.com",
+    to,
+    subject,
+    text,
+  };
+
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
+    res.status(200).send({ message: 'Email sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).send({ message: 'Failed to send email', error });
+  }
 
 
 
