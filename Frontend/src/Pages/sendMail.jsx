@@ -20,15 +20,52 @@ import 'react-quill/dist/quill.snow.css';
   console.log(email)
 
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch('/api/user/sendmail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setPublishError(data.message);
+        return;
+      }
+      console.log(formData);
+
+      if (res.ok) {
+        setPublishError(null);
+        navigate(`/dashboard?tab=users`);
+      }
+    } catch (error) {
+      setPublishError('Something went wrong');
+    }
+  };
+
+
+
+
+
+
+  
  
  
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen" style={{width:"50%"}}>
         <h1 className="text-center text-3xl my-7 font-semibold">Send Mail</h1>
-        <form className="flex flex-col  gap-4" >
+        <form className="flex flex-col  gap-4"  onSubmit={handleSubmit}>
 
         <TextInput type='text'placeholder='email'required id='email'className='flex-1'  value={email}
                           readOnly
+                          onChange={(value) => {
+    
+                            setFormData({ ...formData, email:  e.target.value });
+                          }}
              
             />
 
