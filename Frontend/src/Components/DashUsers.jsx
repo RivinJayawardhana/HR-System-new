@@ -78,7 +78,7 @@ return (
           <Table.Head>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Email</Table.HeadCell>
-            <Table.HeadCell>Request Documents</Table.HeadCell>
+        
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
             <Table.HeadCell>Send mail</Table.HeadCell>
@@ -100,11 +100,7 @@ return (
          
                   <Table.Cell>{members.username}</Table.Cell>
               
-                  <Table.Cell>
-                    <Link className="text-teal-500 hover:underline" to={`/updatestaff`}>
-                      <span>Request Details</span>
-                    </Link>
-                  </Table.Cell>
+              
                   <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
                       <span>View</span>
                     </Link></Table.Cell>
