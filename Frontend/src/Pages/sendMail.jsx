@@ -31,6 +31,12 @@ import 'react-quill/dist/quill.snow.css';
                           readOnly
              
             />
+
+<TextInput type='text'placeholder='Subject'required id='email'className='flex-1'  value={email}
+                          readOnly
+             
+            />
+            
         
         <ReactQuill
           theme="snow"
