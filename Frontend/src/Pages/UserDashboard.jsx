@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const dummyForms = [
   { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
-  { id: 2, title: "Job Preferences", description: "Let us know your job preferences.", status: "Pending" },
+  { id: 2, title: "Job Preferences", description: "Let us know your job preferences.", status: "Completed" },
   { id: 3, title: "Document Uploads", description: "Upload necessary documents.", status: "Completed" },
   { id: 4, title: "Feedback", description: "Provide your feedback about the process.", status: "Pending" },
 ];
