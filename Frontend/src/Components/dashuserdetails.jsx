@@ -120,6 +120,9 @@ const DocumentDropdown = ({ id }) => {
             <Button variant="contained" color="error">
               Approve
             </Button>
+            <Button variant="contained" color="error">
+              Print
+            </Button>
           </Stack>
         </Paper>
       ) : (

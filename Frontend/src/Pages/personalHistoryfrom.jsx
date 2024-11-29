@@ -7,8 +7,9 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function Updatestaff() {
-    const [formData, setFormData] = useState({});
-    const [publishError, setPublishError] = useState(null);
+
+    const[formData, setFormData] = useState({});
+    const[publishError, setPublishError] = useState(null);
     const[file,setFile]=useState(null);
     const[imageUploadProgress,setImageUploadProgress] = useState(null);
     const[imageUploadError,setImageUploadError] = useState(null);
