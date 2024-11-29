@@ -11,6 +11,7 @@ const formSchema = new mongoose.Schema({
   CDSDetails: { type: String, required: true },
 
   status: { type: String, default: "Pending" },
+  Approved: { type: String, default: "not" },
   document1:{
     type:String,
     default:"none"
