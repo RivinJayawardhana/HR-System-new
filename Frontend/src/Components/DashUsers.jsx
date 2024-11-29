@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 export default function DashUsers() {
   const { currentUser } = useSelector((state) => state.user);
   const [Staffmembers, setmembers] = useState([]);
-  
   const [showModel , setShowModel] = useState(false);
   const [memberIDToDelete, setmemberIdToDelete] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
