@@ -112,7 +112,7 @@ const DocumentDropdown = ({ id }) => {
             spacing={2}
             sx={{ mt: 2, justifyContent: "flex-end" }}
           >
-            <Link to={`/updateform/${selectedForm}`}>
+            <Link to={`/`}>
               <Button variant="contained" color="primary">
                 Edit
               </Button>
