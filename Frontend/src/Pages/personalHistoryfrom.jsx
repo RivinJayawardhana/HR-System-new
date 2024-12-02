@@ -367,7 +367,7 @@ export default function UpdateStaff() {
                         />
                         <TextInput
                             type="text"
-                            placeholder="placeOfWork"
+                            placeholder="contactNo"
                             required
                             onChange={(e) => {
                                 const emergencyContact = [...formData.emergencyContact];
