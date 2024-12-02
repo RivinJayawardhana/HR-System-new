@@ -156,12 +156,7 @@ export default function UpdateStaff() {
                     required
                     onChange={(e) => setFormData({ ...formData, contactno: e.target.value })}
                 />
-                 <TextInput
-                    type="text"
-                    placeholder="Phone number"
-                    required
-                    onChange={(e) => setFormData({ ...formData, contactno: e.target.value })}
-                />
+                 
                 <TextInput
                     type="text"
                     placeholder="NIC number"
@@ -198,6 +193,13 @@ export default function UpdateStaff() {
                 />
 
 
+<label>CDC Account </label>
+             <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} >
+    
+            <option value='yes'>yes</option>
+            <option value='no'>no</option>
+
+          </Select>
                 {/* Qualifications */}
                 <h2>Academic/Professional Qualifications</h2>
                 {formData.qualifications.map((qualification, index) => (
@@ -207,9 +209,9 @@ export default function UpdateStaff() {
                             placeholder="Qualification"
                             required
                             onChange={(e) => {
-                                const qualifications = [...formData.qualifications];
-                                qualifications[index].qualification = e.target.value;
-                                setFormData({ ...formData, qualifications });
+                                const academicQualifications = [...formData.academicQualifications];
+                                academicQualifications[index].qualification = e.target.value;
+                                setFormData({ ...formData, academicQualifications });
                             }}
                         />
                         <TextInput
@@ -217,9 +219,9 @@ export default function UpdateStaff() {
                             placeholder="Institute"
                             required
                             onChange={(e) => {
-                                const qualifications = [...formData.qualifications];
-                                qualifications[index].institute = e.target.value;
-                                setFormData({ ...formData, qualifications });
+                                const academicQualifications = [...formData.academicQualifications];
+                                academicQualifications[index].universityInstitute = e.target.value;
+                                setFormData({ ...formData, academicQualifications });
                             }}
                         />
                         <TextInput
@@ -227,13 +229,66 @@ export default function UpdateStaff() {
                             placeholder="Status"
                             required
                             onChange={(e) => {
-                                const qualifications = [...formData.qualifications];
-                                qualifications[index].status = e.target.value;
-                                setFormData({ ...formData, qualifications });
+                                const academicQualifications = [...formData.academicQualifications];
+                                academicQualifications[index].status = e.target.value;
+                                setFormData({ ...formData, academicQualifications });
                             }}
                         />
                     </div>
                 ))}
+                    
+                    <h2>previousEmploymentDetails</h2>
+                {formData.previousEmploymentDetails.map((previousEmploymentDetails, index) => (
+                    <div key={index} className="flex gap-4">
+                        <TextInput
+                            type="text"
+                            placeholder="employer"
+                            required
+                            onChange={(e) => {
+                                const previousEmploymentDetails = [...formData.previousEmploymentDetails];
+                                previousEmploymentDetails[index].employer = e.target.value;
+                                setFormData({ ...formData, previousEmploymentDetails });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="Natureofbusiness"
+                            required
+                            onChange={(e) => {
+                                const previousEmploymentDetails = [...formData.previousEmploymentDetails];
+                                previousEmploymentDetails[index].Natureofbusiness = e.target.value;
+                                setFormData({ ...formData, previousEmploymentDetails });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="Positionheld"
+                            required
+                            onChange={(e) => {
+                                const previousEmploymentDetails = [...formData.previousEmploymentDetails];
+                                previousEmploymentDetails[index].Positionheld = e.target.value;
+                                setFormData({ ...formData, previousEmploymentDetails });
+                            }}
+                        />
+
+                                   <TextInput 
+                            type="text"
+                            placeholder="Lengthofservice"
+                            required
+                            onChange={(e) => {
+                                const previousEmploymentDetails = [...formData.previousEmploymentDetails];
+                                previousEmploymentDetails[index].Lengthofservice = e.target.value;
+                                setFormData({ ...formData, previousEmploymentDetails });
+                            }}
+                        />
+                    </div>
+                ))}
+
+
+
+
+
+
                 <Button onClick={handleAddQualification} type="button" gradientDuoTone="purpleToBlue">
                     Add Qualification
                 </Button>
