@@ -244,7 +244,9 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
-                    
+                <Button onClick={handleAddQualification} type="button" gradientDuoTone="purpleToBlue">
+                    Add Qualification
+                </Button>    
                     <h2>previousEmploymentDetails</h2>
                 {formData.previousEmploymentDetails.map((previousEmploymentDetails, index) => (
                     <div key={index} className="flex gap-4">
@@ -291,7 +293,9 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
-
+  <Button onClick={handleAddEmployment} type="button" gradientDuoTone="purpleToBlue">
+                    Add Employement
+                </Button> 
  
                              <h2>spouseDetails</h2>
                 {formData.spouseDetails.map((spouseDetails, index) => (
@@ -339,7 +343,9 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
- 
+   <Button onClick={handleAddSpouseDetails} type="button" gradientDuoTone="purpleToBlue">
+                    Add SpouseDetails
+                </Button> 
                       
  <h2>emergencyContact</h2>
                 {formData.emergencyContact.map((emergencyContact, index) => (
@@ -380,10 +386,10 @@ export default function UpdateStaff() {
  
 
 
-
-                <Button onClick={handleAddQualification} type="button" gradientDuoTone="purpleToBlue">
-                    Add Qualification
-                </Button>
+ <Button onClick={handleAddemergencyContact} type="button" gradientDuoTone="purpleToBlue">
+                    Add emergencyContact
+                </Button> 
+                
 
                 {/* Other Fields */}
                 {/* Add similar sections for previous employment, spouse details, and emergency contact details */}
