@@ -284,7 +284,54 @@ export default function UpdateStaff() {
                     </div>
                 ))}
 
+ 
+                             <h2>spouseDetails</h2>
+                {formData.spouseDetails.map((spouseDetails, index) => (
+                    <div key={index} className="flex gap-4">
+                        <TextInput
+                            type="text"
+                            placeholder="name"
+                            required
+                            onChange={(e) => {
+                                const spouseDetails = [...formData.spouseDetails];
+                                spouseDetails[index].name = e.target.value;
+                                setFormData({ ...formData, spouseDetails });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="ID"
+                            required
+                            onChange={(e) => {
+                                const spouseDetails = [...formData.spouseDetails];
+                                spouseDetails[index].ID = e.target.value;
+                                setFormData({ ...formData, spouseDetails });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="placeOfWork"
+                            required
+                            onChange={(e) => {
+                                const spouseDetails = [...formData.spouseDetails];
+                                spouseDetails[index].placeOfWork = e.target.value;
+                                setFormData({ ...formData, spouseDetails });
+                            }}
+                        />
 
+                                   <TextInput 
+                            type="text"
+                            placeholder="positionHeld"
+                            required
+                            onChange={(e) => {
+                                const spouseDetails = [...formData.spouseDetails];
+                                spouseDetails[index].positionHeld = e.target.value;
+                                setFormData({ ...formData, spouseDetails });
+                            }}
+                        />
+                    </div>
+                ))}
+ 
 
 
 
