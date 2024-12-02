@@ -11,7 +11,7 @@ export default function UpdateStaff() {
       academicQualifications: [],
       previousEmploymentDetails: [],
       spouseDetails: [],
-      emergencyContact: {}
+      emergencyContact: []
     });
     const [publishError, setPublishError] = useState(null);
     const [file, setFile] = useState(null);
@@ -83,6 +83,14 @@ export default function UpdateStaff() {
             spouseDetails: [...formData.spouseDetails, { name: "", ID: "", placeOfWork: "", positionHeld: "" }]
         });
     };
+
+    const handleAddemergencyContact = () => {
+      setFormData({
+          ...formData,
+          emergencyContact: [...formData.emergencyContact, { name: "", relationship: "", contactNo: "",  }]
+      });
+  };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -202,7 +210,7 @@ export default function UpdateStaff() {
           </Select>
                 {/* Qualifications */}
                 <h2>Academic/Professional Qualifications</h2>
-                {formData.qualifications.map((qualification, index) => (
+                {formData.academicQualifications.map((academicQualifications, index) => (
                     <div key={index} className="flex gap-4">
                         <TextInput
                             type="text"
@@ -332,7 +340,44 @@ export default function UpdateStaff() {
                     </div>
                 ))}
  
+                      
+ <h2>emergencyContact</h2>
+                {formData.emergencyContact.map((emergencyContact, index) => (
+                    <div key={index} className="flex gap-4">
+                        <TextInput
+                            type="text"
+                            placeholder="name"
+                            required
+                            onChange={(e) => {
+                                const emergencyContact = [...formData.emergencyContact];
+                                emergencyContact[index].name = e.target.value;
+                                setFormData({ ...formData, emergencyContact });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="relationship"
+                            required
+                            onChange={(e) => {
+                                const emergencyContact = [...formData.emergencyContact];
+                                emergencyContact[index].relationship = e.target.value;
+                                setFormData({ ...formData, emergencyContact });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="placeOfWork"
+                            required
+                            onChange={(e) => {
+                                const emergencyContact = [...formData.emergencyContact];
+                                emergencyContact[index].contactNo = e.target.value;
+                                setFormData({ ...formData, emergencyContact });
+                            }}
+                        />
 
+                    </div>
+                ))}
+ 
 
 
 
