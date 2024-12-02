@@ -6,13 +6,17 @@ import { app } from "../firebase";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function Updatestaff() {
-
-    const[formData, setFormData] = useState({});
-    const[publishError, setPublishError] = useState(null);
-    const[file,setFile]=useState(null);
-    const[imageUploadProgress,setImageUploadProgress] = useState(null);
-    const[imageUploadError,setImageUploadError] = useState(null);
+export default function UpdateStaff() {
+    const [formData, setFormData] = useState({
+        qualifications: [],
+        previousEmployment: [],
+        spouseDetails: [],
+        emergencyContact: {}
+    });
+    const [publishError, setPublishError] = useState(null);
+    const [file, setFile] = useState(null);
+    const [imageUploadProgress, setImageUploadProgress] = useState(null);
+    const [imageUploadError, setImageUploadError] = useState(null);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -20,74 +24,63 @@ export default function Updatestaff() {
         setFile(e.target.files[0]);
     };
 
-    const handleUploadImage = () =>{
+    const handleUploadImage = () => {
         try {
-          if(!file){
-            setImageUploadError('please select an image');
-            return;
-          }
-          setImageUploadError(null);
-          const storage = getStorage(app);
-          const fileName = new Date().getTime()+'-'+file.name;
-          const storageRef = ref(storage,fileName);
-          const uploadTask = uploadBytesResumable(storageRef,file);
-          uploadTask.on(
-            "state_changed",
-            (snapshot) => {
-              const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              setImageUploadProgress(progress.toFixed(0));
-            },
-            
-            (error) => {
-              setImageUploadError("Image upload failed");
-              console.error("Upload error:", error);
-              setImageUploadProgress(null);
-             
-            },
-            () => {
-              //from the firebase
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>{
-                setImageUploadProgress(null);
-                setImageUploadError(null);
-                setFormData({...formData, document1: downloadURL});
-              }
-               
-              );
+            if (!file) {
+                setImageUploadError('Please select a file');
+                return;
             }
-          );
-    
-        } catch (error) {
-          setImageUploadError('Failed to upload image');
-          setImageUploadProgress(null);
-          console.log(error);
-        }
-      }
-    
+            setImageUploadError(null);
+            const storage = getStorage(app);
+            const fileName = new Date().getTime() + '-' + file.name;
+            const storageRef = ref(storage, fileName);
+            const uploadTask = uploadBytesResumable(storageRef, file);
 
-    const uploadFile = async () => {
-        if (!file) return null;
-
-        const storage = getStorage(app);
-        const storageRef = ref(storage, `uploads/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
-
-        return new Promise((resolve, reject) => {
             uploadTask.on(
                 "state_changed",
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    setImageUploadProgress(progress);
+                    setImageUploadProgress(progress.toFixed(0));
                 },
                 (error) => {
-                    console.error("File upload error:", error);
-                    setPublishError("Failed to upload file");
-                    reject(error);
+                    setImageUploadError("File upload failed");
+                    console.error("Upload error:", error);
+                    setImageUploadProgress(null);
                 },
-                async () => {
-                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                    resolve(downloadURL);
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        setImageUploadProgress(null);
+                        setImageUploadError(null);
+                        setFormData({ ...formData, document1: downloadURL });
+                    });
                 }
             );
+
+        } catch (error) {
+            setImageUploadError('Failed to upload file');
+            setImageUploadProgress(null);
+            console.log(error);
+        }
+    };
+
+    const handleAddQualification = () => {
+        setFormData({
+            ...formData,
+            qualifications: [...formData.qualifications, { qualification: "", institute: "", status: "" }]
+        });
+    };
+
+    const handleAddEmployment = () => {
+        setFormData({
+            ...formData,
+            previousEmployment: [...formData.previousEmployment, { employer: "", position: "" }]
+        });
+    };
+
+    const handleAddSpouseDetails = () => {
+        setFormData({
+            ...formData,
+            spouseDetails: [...formData.spouseDetails, { name: "", id: "", workPlace: "", position: "" }]
         });
     };
 
@@ -96,13 +89,26 @@ export default function Updatestaff() {
 
         let fileURL = null;
         if (file) {
-            fileURL = await uploadFile();
+            const storage = getStorage(app);
+            const storageRef = ref(storage, `uploads/${file.name}`);
+            const uploadTask = uploadBytesResumable(storageRef, file);
+
+            fileURL = await new Promise((resolve, reject) => {
+                uploadTask.on(
+                    "state_changed",
+                    null,
+                    reject,
+                    async () => {
+                        resolve(await getDownloadURL(uploadTask.snapshot.ref));
+                    }
+                );
+            });
         }
 
         const dataToSubmit = {
             ...formData,
             userId: id,
-            file: fileURL, // Add file URL to form data
+            document1: fileURL
         };
 
         try {
@@ -113,16 +119,15 @@ export default function Updatestaff() {
                 },
                 body: JSON.stringify(dataToSubmit),
             });
+
             const data = await res.json();
             if (!res.ok) {
                 setPublishError(data.message);
                 return;
             }
 
-            if (res.ok) {
-                setPublishError(null);
-                navigate(`/`);
-            }
+            setPublishError(null);
+            navigate(`/`);
         } catch (error) {
             setPublishError("Something went wrong");
         }
@@ -132,87 +137,112 @@ export default function Updatestaff() {
         <div className="p-3 max-w-3xl mx-auto min-h-screen">
             <h1 className="text-center text-3xl my-7 font-semibold">Personal History Form</h1>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                {/* General Inputs */}
                 <TextInput
                     type="text"
                     placeholder="Full Name"
                     required
-                    className="flex-1"
                     onChange={(e) => setFormData({ ...formData, fullname: e.target.value })}
                 />
                 <TextInput
                     type="text"
                     placeholder="Address"
                     required
-                    className="flex-1"
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                 />
                 <TextInput
                     type="text"
                     placeholder="Phone number"
                     required
-                    className="flex-1"
+                    onChange={(e) => setFormData({ ...formData, contactno: e.target.value })}
+                />
+                 <TextInput
+                    type="text"
+                    placeholder="Phone number"
+                    required
                     onChange={(e) => setFormData({ ...formData, contactno: e.target.value })}
                 />
                 <TextInput
                     type="text"
                     placeholder="NIC number"
                     required
-                    className="flex-1"
-                    onChange={(e) => setFormData({ ...formData, nic: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, NIC: e.target.value })}
                 />
-                <label>Date of Birth</label>
+
+                
                 <TextInput
                     type="date"
+                    placeholder="date of birth"
                     required
-                    className="flex-1"
                     onChange={(e) => setFormData({ ...formData, dateofbirth: e.target.value })}
                 />
-                <label>Date of Join</label>
+
                 <TextInput
                     type="date"
+                    placeholder="Date of Join"
                     required
-                    className="flex-1"
                     onChange={(e) => setFormData({ ...formData, DateofJoin: e.target.value })}
                 />
-                <label>CDC Account</label>
-                <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })}>
-                    <option value="yes">yes</option>
-                    <option value="no">no</option>
-                </Select>
+                
 
-                <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'>
+
+                {/* Qualifications */}
+                <h2>Academic/Professional Qualifications</h2>
+                {formData.qualifications.map((qualification, index) => (
+                    <div key={index} className="flex gap-4">
+                        <TextInput
+                            type="text"
+                            placeholder="Qualification"
+                            required
+                            onChange={(e) => {
+                                const qualifications = [...formData.qualifications];
+                                qualifications[index].qualification = e.target.value;
+                                setFormData({ ...formData, qualifications });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="Institute"
+                            required
+                            onChange={(e) => {
+                                const qualifications = [...formData.qualifications];
+                                qualifications[index].institute = e.target.value;
+                                setFormData({ ...formData, qualifications });
+                            }}
+                        />
+                        <TextInput
+                            type="text"
+                            placeholder="Status"
+                            required
+                            onChange={(e) => {
+                                const qualifications = [...formData.qualifications];
+                                qualifications[index].status = e.target.value;
+                                setFormData({ ...formData, qualifications });
+                            }}
+                        />
+                    </div>
+                ))}
+                <Button onClick={handleAddQualification} type="button" gradientDuoTone="purpleToBlue">
+                    Add Qualification
+                </Button>
+
+                {/* Other Fields */}
+                {/* Add similar sections for previous employment, spouse details, and emergency contact details */}
+
+                {/* File Upload */}
                 <FileInput
-  type="file"
-  accept="application/pdf"
-  onChange={(e) => setFile(e.target.files[0])}
-/>
-            <Button onClick={handleUploadImage} type='button'gradientDuoTone='purpleToBlue'size='sm' outline disabled={imageUploadProgress}>
-              {
-                imageUploadProgress ?(
-                <div className="w-16 h-16" >
-                  <CircularProgressbar value={imageUploadProgress} text={`${imageUploadProgress || 0}`}/>
-                </div>
-                ) :('Upload File')
-
-              }
-            </Button>
-          </div>
-        
-        {imageUploadError && (
-          <Alert color='failure'>{imageUploadError}</Alert>
-        )}
-        {formData.image && (
-          <img src={formData.image} alt="upload" className="w-full h-82 object-cover"/>
-        )}
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                />
+                <Button onClick={handleUploadImage} type="button" gradientDuoTone="purpleToBlue">
+                    Upload File
+                </Button>
 
                 <Button type="submit" gradientDuoTone="purpleToBlue">
                     Submit
                 </Button>
-                {publishError && (
-                    <Alert className="mt-5" color="failure">
-                        {publishError}
-                    </Alert>
-                )}
+                {publishError && <Alert color="failure">{publishError}</Alert>}
             </form>
         </div>
     );
