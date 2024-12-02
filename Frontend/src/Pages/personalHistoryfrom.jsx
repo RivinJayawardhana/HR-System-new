@@ -169,6 +169,13 @@ export default function UpdateStaff() {
                     onChange={(e) => setFormData({ ...formData, NIC: e.target.value })}
                 />
 
+<TextInput
+                    type="text"
+                    placeholder="civilStatus"
+                    required
+                    onChange={(e) => setFormData({ ...formData, civilStatus: e.target.value })}
+                />
+
                 <label>Date of Birth</label>
                 <TextInput
                     type="date"
@@ -183,7 +190,12 @@ export default function UpdateStaff() {
                     required
                     onChange={(e) => setFormData({ ...formData, DateofJoin: e.target.value })}
                 />
-                
+                <TextInput
+                    type="date"
+                    placeholder="Date of Join"
+                    required
+                    onChange={(e) => setFormData({ ...formData, DateofJoin: e.target.value })}
+                />
 
 
                 {/* Qualifications */}

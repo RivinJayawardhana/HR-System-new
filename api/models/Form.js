@@ -22,6 +22,9 @@ const formSchema = new mongoose.Schema({
   previousEmploymentDetails: [
     {
       employer: { type: String, required: true },
+      Natureofbusiness:{ type: String, required: true },
+      Positionheld:{ type: String, required: true },
+      Lengthofservice:{ type: String, required: true },
     },
   ],
 
