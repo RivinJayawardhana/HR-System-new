@@ -8,10 +8,10 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function UpdateStaff() {
     const [formData, setFormData] = useState({
-        qualifications: [],
-        previousEmployment: [],
-        spouseDetails: [],
-        emergencyContact: {}
+      academicQualifications: [],
+      previousEmploymentDetails: [],
+      spouseDetails: [],
+      emergencyContact: {}
     });
     const [publishError, setPublishError] = useState(null);
     const [file, setFile] = useState(null);
@@ -66,21 +66,21 @@ export default function UpdateStaff() {
     const handleAddQualification = () => {
         setFormData({
             ...formData,
-            qualifications: [...formData.qualifications, { qualification: "", institute: "", status: "" }]
+            academicQualifications: [...formData.academicQualifications, { qualification: "", universityInstitute: "", status: "" }]
         });
     };
 
     const handleAddEmployment = () => {
         setFormData({
             ...formData,
-            previousEmployment: [...formData.previousEmployment, { employer: "", position: "" }]
+            previousEmploymentDetails: [...formData.previousEmploymentDetails, { employer: "", Natureofbusiness: "", Positionheld: "",Lengthofservice: "" }]
         });
     };
 
     const handleAddSpouseDetails = () => {
         setFormData({
             ...formData,
-            spouseDetails: [...formData.spouseDetails, { name: "", id: "", workPlace: "", position: "" }]
+            spouseDetails: [...formData.spouseDetails, { name: "", ID: "", placeOfWork: "", positionHeld: "" }]
         });
     };
 
