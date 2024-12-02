@@ -5,47 +5,53 @@ import  Form from "../models/Form.js"
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
-export const add = async(req,res,next)=>{
+export const add = async (req, res, next) => {
+  const {
+      userId,
+      fullname,
+      address,
+      contactno,
+      dateofbirth,
+      NIC,
+      DateofJoin,
+      CDSDetails,
+      academicQualifications,
+      previousEmploymentDetails,
+      civilStatus,
+      spouseDetails,
+      emergencyContact,
+      document1
+  } = req.body;
 
-    
-   const userId=req.body.userId;
-   const fullname=req.body.fullname;
-   const address=req.body.address;
-   const contactno=req.body.contactno;
-   const dateofbirth=req.body.dateofbirth;
-   const NIC=req.body.nic;
-   const DateofJoin=req.body.DateofJoin;
-   const CDSDetails=req.body.CDSDetails;
-   const status="Submitted";
-   const document1=req.body.document1;
-   
- const newForm = new Form({
-        userId,
-        fullname,
-        address,
-        contactno,
-        dateofbirth,
-        NIC,
-        DateofJoin,
-        CDSDetails,
-        status,
-        document1        
-});
+  // Default values for new fields
+  const status = "Submitted";
 
+  // Construct the form data object with all fields
+  const newForm = new Form({
+      userId,
+      fullname,
+      address,
+      contactno,
+      dateofbirth,
+      NIC,
+      DateofJoin,
+      CDSDetails,
+      academicQualifications: academicQualifications || [],
+      previousEmploymentDetails: previousEmploymentDetails || [],
+      civilStatus,
+      spouseDetails: spouseDetails || [],
+      emergencyContact: emergencyContact || [],
+      status,
+      document1
+  });
 
-
-      try {
-        const savedform = await newForm.save();
-        res.status(201).json(savedform);
-      
-      } catch (error) {
-        next(error);
-       
-      }
-
-
-
-}
+  try {
+      const savedForm = await newForm.save();
+      res.status(201).json(savedForm);
+  } catch (error) {
+      next(error);
+  }
+};
 
 
 

@@ -116,7 +116,7 @@ export default function UpdateStaff() {
         const dataToSubmit = {
             ...formData,
             userId: id,
-            document1: fileURL
+        
         };
 
         try {
@@ -193,12 +193,7 @@ export default function UpdateStaff() {
                     required
                     onChange={(e) => setFormData({ ...formData, DateofJoin: e.target.value })}
                 />
-                <TextInput
-                    type="date"
-                    placeholder="Date of Join"
-                    required
-                    onChange={(e) => setFormData({ ...formData, DateofJoin: e.target.value })}
-                />
+                
 
 
 <label>CDC Account </label>
