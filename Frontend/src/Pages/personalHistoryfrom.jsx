@@ -169,14 +169,14 @@ export default function UpdateStaff() {
                     onChange={(e) => setFormData({ ...formData, NIC: e.target.value })}
                 />
 
-                
+                <label>Date of Birth</label>
                 <TextInput
                     type="date"
                     placeholder="date of birth"
                     required
                     onChange={(e) => setFormData({ ...formData, dateofbirth: e.target.value })}
                 />
-
+ <label>Date of Joined</label>
                 <TextInput
                     type="date"
                     placeholder="Date of Join"
