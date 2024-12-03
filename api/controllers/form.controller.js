@@ -50,6 +50,7 @@ export const add = async (req, res, next) => {
       res.status(201).json(savedForm);
   } catch (error) {
       next(error);
+      console.log(error);
   }
 };
 
