@@ -39,11 +39,12 @@ const formSchema = new mongoose.Schema({
     },
   ],
 
-  emergencyContact: {
+  emergencyContact: [{
     name: { type: String, required: true },
     relationship: { type: String, required: true },
     contactNo: { type: String, required: true },
-  },
+  }
+],
 
   status: { type: String, default: "Pending" },
   Approved: { type: String, default: "not" },

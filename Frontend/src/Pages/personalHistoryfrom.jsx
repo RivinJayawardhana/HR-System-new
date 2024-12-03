@@ -87,7 +87,7 @@ export default function UpdateStaff() {
     const handleAddemergencyContact = () => {
       setFormData({
           ...formData,
-          emergencyContact: [...formData.emergencyContact, { name: "", relationship: "", contactNo: "",  }]
+          emergencyContact: [...formData.emergencyContact, { name: "", relationship: "", contactNo: ""  }]
       });
   };
 
