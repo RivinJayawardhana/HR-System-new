@@ -239,7 +239,7 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
-                <Button onClick={handleAddQualification} type="button" gradientDuoTone="purpleToBlue">
+                <Button onClick={handleAddQualification} type="button" className="bg-black text-white">
                     Add Qualification
                 </Button>    
                     <h2>previousEmploymentDetails</h2>
@@ -288,7 +288,7 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
-  <Button onClick={handleAddEmployment} type="button" gradientDuoTone="purpleToBlue">
+  <Button onClick={handleAddEmployment} type="button" className="bg-black text-white">
                     Add Employement
                 </Button> 
  
@@ -338,7 +338,7 @@ export default function UpdateStaff() {
                         />
                     </div>
                 ))}
-   <Button onClick={handleAddSpouseDetails} type="button" gradientDuoTone="purpleToBlue">
+   <Button onClick={handleAddSpouseDetails} type="button" className="bg-black text-white">
                     Add SpouseDetails
                 </Button> 
                       
@@ -381,7 +381,7 @@ export default function UpdateStaff() {
  
 
 
- <Button onClick={handleAddemergencyContact} type="button" gradientDuoTone="purpleToBlue">
+ <Button onClick={handleAddemergencyContact} type="button" className="bg-black text-white">
                     Add emergencyContact
                 </Button> 
                 
@@ -395,11 +395,11 @@ export default function UpdateStaff() {
                     accept="application/pdf"
                     onChange={handleFileChange}
                 />
-                <Button onClick={handleUploadImage} type="button" gradientDuoTone="purpleToBlue">
+                <Button onClick={handleUploadImage} type="button" className="bg-black text-white">
                     Upload File
                 </Button>
 
-                <Button type="submit" gradientDuoTone="purpleToBlue">
+                <Button type="submit" className="bg-black text-white">
                     Submit
                 </Button>
                 {publishError && <Alert color="failure">{publishError}</Alert>}
