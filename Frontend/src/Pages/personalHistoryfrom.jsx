@@ -392,13 +392,21 @@ export default function UpdateStaff() {
 
                 {/* File Upload */}
                 <FileInput
-                    type="file"
-                    accept="application/pdf"
-                    onChange={handleFileChange}
-                />
-                <Button onClick={handleUploadImage} type="button" className="bg-black text-white">
-                    Upload File
-                </Button>
+  type="file"
+  accept="application/pdf"
+  onChange={(e) => setFile(e.target.files[0])}
+/>
+            <Button onClick={handleUploadImage} type='button'gradientDuoTone='purpleToBlue'size='sm' outline disabled={imageUploadProgress}>
+              {
+                imageUploadProgress ?(
+                <div className="w-16 h-16" >
+                  <CircularProgressbar value={imageUploadProgress} text={`${imageUploadProgress || 0}`}/>
+                </div>
+                ) :('Upload File')
+
+              }
+            </Button>
+       
 
                 <Button type="submit" className="bg-black text-white">
                     Submit
