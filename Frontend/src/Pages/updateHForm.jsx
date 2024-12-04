@@ -22,6 +22,7 @@ export default function UpdateHform() {
   const [spouseDetails, setSpouseDetails] = useState([]);
   const [emergencyContact, setEmergencyContact] = useState([]);
 
+  // Fetch form data on component mount
   useEffect(() => {
     const fetchs = async () => {
       try {
@@ -42,29 +43,30 @@ export default function UpdateHform() {
           setPreviousEmploymentDetails(data.previousEmploymentDetails || []);
           setSpouseDetails(data.spouseDetails || []);
           setEmergencyContact(data.emergencyContact || []);
-          setFormData({ ...formData, userId: id });
         }
       } catch (error) {
         console.error(error.message);
       }
     };
     fetchs();
-  }, [fid]);
+  }, [id]);
 
-  const handleArrayChange = (setter, index, value) => {
+  // Array item handlers
+  const handleArrayObjectChange = (setter, index, field, value) => {
     setter((prev) =>
-      prev.map((item, i) => (i === index ? value : item))
+      prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
     );
   };
 
-  const handleAddArrayItem = (setter, placeholder = "") => {
-    setter((prev) => [...prev, placeholder]);
+  const handleAddArrayObjectItem = (setter, defaultObject) => {
+    setter((prev) => [...prev, defaultObject]);
   };
 
-  const handleRemoveArrayItem = (setter, index) => {
+  const handleRemoveArrayObjectItem = (setter, index) => {
     setter((prev) => prev.filter((_, i) => i !== index));
   };
 
+  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -91,15 +93,14 @@ export default function UpdateHform() {
         },
         body: JSON.stringify(updatedFormData),
       });
-      const data = await res.json();
+
       if (!res.ok) {
+        const data = await res.json();
         setPublishError(data.message);
         return;
       }
-      if (res.ok) {
-        setPublishError(null);
-        alert("Updated");
-      }
+      setPublishError(null);
+      alert("Updated successfully!");
     } catch (error) {
       setPublishError("Something went wrong");
     }
@@ -113,102 +114,96 @@ export default function UpdateHform() {
           type="text"
           placeholder="Full Name"
           required
-          id="Member Name"
-          className="flex-1"
+          value={fullname}
           onChange={(e) => setFullname(e.target.value)}
-          defaultValue={fullname}
         />
         <TextInput
           type="text"
           placeholder="Address"
           required
-          id="Address"
-          className="flex-1"
+          value={address}
           onChange={(e) => setAddress(e.target.value)}
-          defaultValue={address}
         />
         <TextInput
           type="text"
           placeholder="Phone Number"
           required
-          id="Phone number"
-          className="flex-1"
+          value={contactno}
           onChange={(e) => setContactno(e.target.value)}
-          defaultValue={contactno}
         />
         <TextInput
           type="text"
           placeholder="NIC Number"
           required
-          id="NIC"
-          className="flex-1"
+          value={NIC}
           onChange={(e) => setNIC(e.target.value)}
-          defaultValue={NIC}
         />
         <label>Date of Birth</label>
         <TextInput
           type="date"
           required
-          id="Date of Birth"
-          className="flex-1"
+          value={dateofbirth}
           onChange={(e) => setDateofbirth(e.target.value)}
-          defaultValue={dateofbirth}
         />
         <label>Date of Join</label>
         <TextInput
           type="date"
           required
-          id="Date of Join"
-          className="flex-1"
+          value={DateofJoin}
           onChange={(e) => setDateofJoin(e.target.value)}
-          defaultValue={DateofJoin}
         />
         <label>CDC Account</label>
-        <Select
-          onChange={(e) => setCDSDetails(e.target.value)}
-          defaultValue={CDSDetails}
-        >
+        <Select value={CDSDetails} onChange={(e) => setCDSDetails(e.target.value)}>
           <option value="yes">yes</option>
           <option value="no">no</option>
         </Select>
 
-        {/* Array fields */}
+        {/* Dynamic Array Fields */}
         {[
           {
             label: "Academic Qualifications",
             array: academicQualifications,
             setter: setAcademicQualifications,
+            defaultObject: { qualification: "", universityInstitute: "",status:"" },
           },
           {
             label: "Previous Employment Details",
             array: previousEmploymentDetails,
             setter: setPreviousEmploymentDetails,
+            defaultObject: { employer: "", Natureofbusiness: "", Positionheld: "",Lengthofservice:"" },
           },
           {
             label: "Spouse Details",
             array: spouseDetails,
             setter: setSpouseDetails,
+            defaultObject: { name: "", ID: "",placeOfWork:"",positionHeld:""},
           },
           {
             label: "Emergency Contacts",
             array: emergencyContact,
             setter: setEmergencyContact,
+            defaultObject: { name: "", relationship: "",contactNo:""},
           },
-        ].map(({ label, array, setter }, index) => (
+        ].map(({ label, array, setter, defaultObject }, index) => (
           <div key={index}>
             <label>{label}</label>
             {array.map((item, i) => (
-              <div key={i} className="flex gap-2 items-center">
-                <TextInput
-                  type="text"
-                  value={item}
-                  onChange={(e) => handleArrayChange(setter, i, e.target.value)}
-                  className="flex-1"
-                />
+              <div key={i} className="flex flex-col gap-2">
+                {Object.keys(defaultObject).map((field) => (
+                  <TextInput
+                    key={field}
+                    type="text"
+                    placeholder={field}
+                    value={item[field] || ""}
+                    onChange={(e) =>
+                      handleArrayObjectChange(setter, i, field, e.target.value)
+                    }
+                  />
+                ))}
                 <Button
                   type="button"
                   color="failure"
-                  onClick={() => handleRemoveArrayItem(setter, i)}
+                  onClick={() => handleRemoveArrayObjectItem(setter, i)}
                 >
                   Remove
                 </Button>
@@ -217,14 +212,14 @@ export default function UpdateHform() {
             <Button
               type="button"
               className="bg-black text-white"
-              onClick={() => handleAddArrayItem(setter)}
+              onClick={() => handleAddArrayObjectItem(setter, defaultObject)}
             >
-              Add {label.slice(0, -1)}
+              Add {label}
             </Button>
           </div>
         ))}
 
-        <Button type="submit" className="bg-black text-white">
+        <Button type="submit"className="bg-black text-white">
           Update
         </Button>
         {publishError && (
