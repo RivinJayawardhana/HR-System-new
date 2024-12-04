@@ -216,7 +216,7 @@ export default function UpdateHform() {
             ))}
             <Button
               type="button"
-              gradientDuoTone="greenToBlue"
+              className="bg-black text-white"
               onClick={() => handleAddArrayItem(setter)}
             >
               Add {label.slice(0, -1)}
@@ -224,7 +224,7 @@ export default function UpdateHform() {
           </div>
         ))}
 
-        <Button type="submit" gradientDuoTone="purpleToBlue">
+        <Button type="submit" className="bg-black text-white">
           Update
         </Button>
         {publishError && (
