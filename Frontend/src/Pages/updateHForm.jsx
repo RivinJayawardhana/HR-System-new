@@ -22,7 +22,8 @@ export default function UpdateHform() {
   const [NIC, setNIC] = useState("");
   const [DateofJoin, setDateofJoin] = useState("");
   const [CDSDetails, setCDSDetails] = useState("");
-  const [status, setStatus] = useState(""); // Default status
+  const [status, setStatus] = useState("");
+  const [civilstatus, setcivilstatus] = useState(""); // Default status
   
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export default function UpdateHform() {
             setDateofJoin(data.DateofJoin);
             setCDSDetails(data.CDSDetails);
             setStatus(data.status)
+            setcivilstatus(data.civilStatus);
             
            
             setFormData({ ...formData, userId: id});
