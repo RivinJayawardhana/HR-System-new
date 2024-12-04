@@ -46,6 +46,10 @@ export default function UpdateHform() {
             setCDSDetails(data.CDSDetails);
             setStatus(data.status)
             setcivilstatus(data.civilStatus);
+            setacedemic(data.academicQualifications);
+            setpreemployee(data.previousEmploymentDetails);
+            setspouseDetails(data.spouseDetails);
+            setemergencyContact(data.emergencyContact);
             
            
             setFormData({ ...formData, userId: id});
