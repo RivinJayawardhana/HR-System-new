@@ -54,10 +54,11 @@ export default function UpdateHform() {
            
             setFormData({ ...formData, userId: id});
            
-           
+            console.log(spouseDetails);
           }
         } catch (error) {
           console.log(error.message);
+          
         }
       };
        fetchs();
