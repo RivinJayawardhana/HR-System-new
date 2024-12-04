@@ -92,6 +92,11 @@ export const Getform= async(req,res,next)=>{
              CDSDetails:req.body.CDSDetails,
              status:"Submitted",
              document1:req.body.document1,
+             civilStatus: req.body.civilStatus,
+             academicQualifications:req.body.academicQualifications,
+             previousEmploymentDetails:req.body.previousEmploymentDetails,
+             spouseDetails:req.body.spouseDetails,
+             emergencyContact:req.body.emergencyContact,
 
   
           },
