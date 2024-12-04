@@ -24,6 +24,10 @@ export default function UpdateHform() {
   const [CDSDetails, setCDSDetails] = useState("");
   const [status, setStatus] = useState("");
   const [civilstatus, setcivilstatus] = useState(""); // Default status
+  const [acdemic, setacedemic] = useState([]);
+  const [preemployee, setpreemployee] = useState([]);
+  const [spouseDetails, setspouseDetails] = useState([]);
+  const [emergencyContact, setemergencyContact] = useState([]);
   
 
   useEffect(() => {
@@ -119,6 +123,12 @@ try {
               setFormData({ ...formData, DateofJoin: e.target.value })
             }  defaultValue={DateofJoin}/>
 
+<TextInput type='text'placeholder='Civil Status'required id='Phone number'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, civilStatus: e.target.value })
+            }  defaultValue={civilstatus}/>
+
+
+            
 <TextInput type='text'placeholder='Civil Status'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, civilStatus: e.target.value })
             }  defaultValue={civilstatus}/>
