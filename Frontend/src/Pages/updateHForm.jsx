@@ -119,6 +119,10 @@ try {
               setFormData({ ...formData, DateofJoin: e.target.value })
             }  defaultValue={DateofJoin}/>
 
+<TextInput type='text'placeholder='Civil Status'required id='Phone number'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, civilStatus: e.target.value })
+            }  defaultValue={civilstatus}/>
+
             <label>CDC Account </label>
              <Select onChange={(e) => setFormData({ ...formData, CDSDetails: e.target.value })} defaultValue={CDSDetails} >
     
