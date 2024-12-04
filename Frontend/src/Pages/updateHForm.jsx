@@ -7,7 +7,7 @@ export default function UpdateHform() {
   const [publishError, setPublishError] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [fid, setfid] = useState(null);
+  const [fid, setFid] = useState(null);
   const [fullname, setFullname] = useState("");
   const [address, setAddress] = useState("");
   const [contactno, setContactno] = useState("");
@@ -24,12 +24,12 @@ export default function UpdateHform() {
 
   // Fetch form data on component mount
   useEffect(() => {
-    const fetchs = async () => {
+    const fetchData = async () => {
       try {
         const res = await fetch(`/api/form/get/${id}`);
         const data = await res.json();
         if (res.ok) {
-          setfid(data._id);
+          setFid(data._id);
           setFullname(data.fullname);
           setAddress(data.address);
           setContactno(data.contactno);
@@ -48,10 +48,10 @@ export default function UpdateHform() {
         console.error(error.message);
       }
     };
-    fetchs();
+    fetchData();
   }, [id]);
 
-  // Array item handlers
+  // Array item handlers for updating individual array items
   const handleArrayObjectChange = (setter, index, field, value) => {
     setter((prev) =>
       prev.map((item, i) => (i === index ? { ...item, [field]: value } : item))
@@ -66,7 +66,7 @@ export default function UpdateHform() {
     setter((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Submit form
+  // Submit form handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -110,6 +110,7 @@ export default function UpdateHform() {
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
       <h1 className="text-center text-3xl my-7 font-semibold">Personal History Form</h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        {/* Basic Inputs */}
         <TextInput
           type="text"
           placeholder="Full Name"
@@ -159,32 +160,27 @@ export default function UpdateHform() {
         </Select>
 
         {/* Dynamic Array Fields */}
-        {[
-          {
-            label: "Academic Qualifications",
-            array: academicQualifications,
-            setter: setAcademicQualifications,
-            defaultObject: { qualification: "", universityInstitute: "",status:"" },
-          },
-          {
-            label: "Previous Employment Details",
-            array: previousEmploymentDetails,
-            setter: setPreviousEmploymentDetails,
-            defaultObject: { employer: "", Natureofbusiness: "", Positionheld: "",Lengthofservice:"" },
-          },
-          {
-            label: "Spouse Details",
-            array: spouseDetails,
-            setter: setSpouseDetails,
-            defaultObject: { name: "", ID: "",placeOfWork:"",positionHeld:""},
-          },
-          {
-            label: "Emergency Contacts",
-            array: emergencyContact,
-            setter: setEmergencyContact,
-            defaultObject: { name: "", relationship: "",contactNo:""},
-          },
-        ].map(({ label, array, setter, defaultObject }, index) => (
+        {[{
+          label: "Academic Qualifications",
+          array: academicQualifications,
+          setter: setAcademicQualifications,
+          defaultObject: { qualification: "", universityInstitute: "", status: "" },
+        }, {
+          label: "Previous Employment Details",
+          array: previousEmploymentDetails,
+          setter: setPreviousEmploymentDetails,
+          defaultObject: { employer: "", Natureofbusiness: "", Positionheld: "", Lengthofservice: "" },
+        }, {
+          label: "Spouse Details",
+          array: spouseDetails,
+          setter: setSpouseDetails,
+          defaultObject: { name: "", ID: "", placeOfWork: "", positionHeld: "" },
+        }, {
+          label: "Emergency Contacts",
+          array: emergencyContact,
+          setter: setEmergencyContact,
+          defaultObject: { name: "", relationship: "", contactNo: "" },
+        }].map(({ label, array, setter, defaultObject }, index) => (
           <div key={index}>
             <label>{label}</label>
             {array.map((item, i) => (
@@ -219,9 +215,12 @@ export default function UpdateHform() {
           </div>
         ))}
 
-        <Button type="submit"className="bg-black text-white">
+        {/* Submit Button */}
+        <Button type="submit" className="bg-black text-white">
           Update
         </Button>
+
+        {/* Error Alert */}
         {publishError && (
           <Alert className="mt-5" color="failure">
             {publishError}
