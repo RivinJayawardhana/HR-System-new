@@ -99,13 +99,18 @@ export default function Addstaff() {
             }/>
        
            
-            <TextInput type='text'placeholder='User Name'required id='User Name'className='flex-1'  onChange={(e) =>
+            <TextInput type='text'placeholder='email'required id='User Name'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, username: e.target.value })
             }/>
-<TextInput type='text'placeholder='Password'required id='Password'className='flex-1'  onChange={(e) =>
-              setFormData({ ...formData, password: e.target.value })
+
+
+<TextInput type='text'placeholder='contact Number'required id='Password'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, contactNumber: e.target.value })
             }/>
            
+           <TextInput type='text'placeholder='position'required id='Password'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, position: e.target.value })
+            }/>
             
             
         <Button type='submit' gradientDuoTone='purpleToBlue'>Add</Button>
