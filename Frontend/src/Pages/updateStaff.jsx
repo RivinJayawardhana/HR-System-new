@@ -109,7 +109,7 @@ export default function Updatestaff() {
             <TextInput type='text'placeholder='Phone number'required id='Phone number'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, number: e.target.value })
             } defaultValue={number}/>
-<TextInput type='email'placeholder='Email'required id='email'className='flex-1'  onChange={(e) =>
+        <TextInput type='email'placeholder='Email'required id='email'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
             } defaultValue={email}/>
              <Select onChange={(e) => setFormData({ ...formData, type: e.target.value })} defaultValue={type}>

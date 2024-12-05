@@ -30,6 +30,12 @@ const formSchema = new mongoose.Schema({
 
   civilStatus: { type: String, required: true },
 
+  BankName: { type: String, required: true },
+  BankAccNum: { type: String, required: true },
+  Branch: { type: String, required: true },
+
+
+
   spouseDetails: [
     {
       name: { type: String, required: true },
