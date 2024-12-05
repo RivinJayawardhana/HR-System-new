@@ -185,19 +185,19 @@ export default function UpdateStaff() {
                     type="text"
                     placeholder="Bank Name"
                     required
-                    onChange={(e) => setFormData({ ...formData, civilStatus: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, BankName: e.target.value })}
                 />
                 <TextInput
                     type="number"
                     placeholder="Account Number"
                     required
-                    onChange={(e) => setFormData({ ...formData, civilStatus: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, BankAccNum: e.target.value })}
                 />
  <TextInput
                     type="text"
                     placeholder="Branch"
                     required
-                    onChange={(e) => setFormData({ ...formData, civilStatus: e.target.value })}
+                    onChange={(e) => setFormData({ ...formData, Branch: e.target.value })}
                 />
 
                 <label>Date of Birth</label>
