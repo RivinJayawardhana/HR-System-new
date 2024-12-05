@@ -111,7 +111,9 @@ export default function Addstaff() {
            <TextInput type='text'placeholder='position'required id='Password'className='flex-1'  onChange={(e) =>
               setFormData({ ...formData, position: e.target.value })
             }/>
-            
+            <TextInput type='text'placeholder='password'required id='Password'className='flex-1'  onChange={(e) =>
+              setFormData({ ...formData, password: e.target.value })
+            }/>
             
         <Button type='submit' gradientDuoTone='purpleToBlue'>Add</Button>
         {publishError && (
