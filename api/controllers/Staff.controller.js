@@ -15,11 +15,16 @@ export const add = async(req,res,next)=>{
   const username=req.body.username;
   
   const password=req.body.password;
+  const contactNumber=req.body.contactNumber;
+  const position=req.body.position;
   
       const newstaffmember = new staff({
         Staffmembername,
         username,
         password,
+        contactNumber,
+        position,
+
         
         
 });
