@@ -16,6 +16,10 @@ export default function UpdateHform() {
   const [DateofJoin, setDateofJoin] = useState("");
   const [CDSDetails, setCDSDetails] = useState("");
   const [status, setStatus] = useState("");
+  const [BankName, setBankName] = useState("");
+  const [BankAccNum, setBankAccNum] = useState("");
+  const [Branch, setBranch] = useState("");
+
   const [civilstatus, setcivilstatus] = useState("");
   const [academicQualifications, setAcademicQualifications] = useState([]);
   const [previousEmploymentDetails, setPreviousEmploymentDetails] = useState([]);
@@ -43,6 +47,9 @@ export default function UpdateHform() {
           setPreviousEmploymentDetails(data.previousEmploymentDetails || []);
           setSpouseDetails(data.spouseDetails || []);
           setEmergencyContact(data.emergencyContact || []);
+          setBankName(data.BankName);
+          setBankAccNum(data.BankAccNum);
+          setBranch(data.Branch);
         }
       } catch (error) {
         console.error(error.message);
@@ -80,6 +87,9 @@ export default function UpdateHform() {
         CDSDetails,
         status,
         civilStatus: civilstatus,
+        BankName,
+        BankAccNum,
+        Branch,
         academicQualifications,
         previousEmploymentDetails,
         spouseDetails,
@@ -139,6 +149,29 @@ export default function UpdateHform() {
           value={NIC}
           onChange={(e) => setNIC(e.target.value)}
         />
+        <label>Bank Details</label>
+                <TextInput
+                    type="text"
+                    placeholder="Bank Name"
+                    required
+                    value={BankName}
+                    onChange={(e) => setBankName(e.target.value)}
+                />
+                <TextInput
+                    type="number"
+                    placeholder="Account Number"
+                    required
+                    onChange={(e) => setBankAccNum(e.target.value)}
+                    value={BankAccNum}
+                />
+ <TextInput
+                    type="text"
+                    placeholder="Branch"
+                    required
+                    onChange={(e) => setBranch(e.target.value)}
+                    value={Branch}
+                />
+
         <label>Date of Birth</label>
         <TextInput
           type="date"
