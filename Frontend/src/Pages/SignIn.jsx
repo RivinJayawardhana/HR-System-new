@@ -85,13 +85,8 @@ export default function SignIn() {
                             </button>
                         </div>
                     </div>
-                    <Button className="bg-slate-500" disabled={loading} gradientDuoTone='purpleToBlue' type="submit">
-                        {loading ? (
-                            <>
-                                <Spinner size='sm' />
-                                <span className="pl-3">Loading</span>
-                            </>
-                        ) : 'Sign In'}
+                    <Button className="bg-slate-500"  gradientDuoTone='purpleToBlue' type="submit">
+                      Sign In
                     </Button>
                     
                 </form>
