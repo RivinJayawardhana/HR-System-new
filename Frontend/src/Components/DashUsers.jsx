@@ -122,7 +122,7 @@ return (
                   <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=sendemail&email=${members.username}`}>
                       <span>send mail</span>
                     </Link></Table.Cell>
-                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
+                  <Table.Cell><Link className="text-teal-500 hover:underline" to={`/updatestaff/${members._id}`}>
                       <span>Edit</span>
                     </Link></Table.Cell>
              
