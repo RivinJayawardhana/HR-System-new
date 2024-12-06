@@ -77,6 +77,8 @@ return (
           <Table.Head>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Email</Table.HeadCell>
+            <Table.HeadCell>Contact Number</Table.HeadCell>
+            <Table.HeadCell>Position</Table.HeadCell>
         
             <Table.HeadCell>View Details</Table.HeadCell>
             <Table.HeadCell>Delete</Table.HeadCell>
@@ -98,6 +100,8 @@ return (
                 
          
                   <Table.Cell>{members.username}</Table.Cell>
+                  <Table.Cell>{members.contactNumber}</Table.Cell>
+                  <Table.Cell>{members.position}</Table.Cell>
               
               
                   <Table.Cell><Link className="text-teal-500 hover:underline" to={`/dashboard?tab=view&id=${members._id}`}>
