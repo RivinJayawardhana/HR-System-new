@@ -116,7 +116,7 @@ export default function Updatestaff() {
               setFormData({ ...formData, password: e.target.value })
             } defaultValue={password}/>
             
-        <Button type='submit' gradientDuoTone='purpleToBlue'>Add</Button>
+        <Button type='submit' className="bg-black text-white">Add</Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}

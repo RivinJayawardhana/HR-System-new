@@ -92,7 +92,7 @@ onChange={(e) => {
         />
     
             
-        <Button type='submit' gradientDuoTone='purpleToBlue'>Send</Button>
+        <Button type='submit' className="bg-black text-white">Send</Button>
         {publishError && (
           <Alert className='mt-5' color='failure'>
             {publishError}
