@@ -242,7 +242,7 @@ export default function DashProfile() {
           </div>
           <Button
             type="submit"
-            gradientDuoTone="purpleToBlue"
+          className="bg-black text-white"
             outline
             className="bg-slate-400 text-black"
             disabled={loading}
@@ -258,7 +258,7 @@ export default function DashProfile() {
               <Link to="/addstaff">
                 <Button
                   type="button"
-                  gradientDuoTone="purpleToBlue"
+                 className="bg-black text-white"
                   className="w-full , text-black bg-slate-400 "
                   outline
                 >
