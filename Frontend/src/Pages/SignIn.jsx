@@ -55,9 +55,9 @@ export default function SignIn() {
             {/* Left Side with Image */}
             <div className="w-1/2 hidden lg:flex items-center justify-center">
                 <img 
-                    src="hrm.png" 
+                    src="https://media.licdn.com/dms/image/D4D12AQGwgO3bMbpGpQ/article-cover_image-shrink_720_1280/0/1658590827603?e=2147483647&v=beta&t=jFINYA10B9Hh9EY0Nf6O5x98biaTWW-mOGc459pEb5Y" 
                     alt="Sign In Illustration" 
-                    className="max-w-full h-auto rounded-lg shadow-lg"
+                    style={{marginLeft:"80px"}}
                 />
             </div>
 
@@ -104,12 +104,12 @@ export default function SignIn() {
                             </div>
                         </div>
                         <Button 
-                            className="bg-slate-500" 
-                            gradientDuoTone="purpleToBlue" 
-                            type="submit"
-                        >
-                            Sign In
-                        </Button>
+    className="bg-black text-white hover:bg-gray-800" 
+    type="submit"
+>
+    Sign In
+</Button>
+
                     </form>
                     <div className="flex gap-2 text-sm mt-5">
                         <span>Forgot Password?</span>
