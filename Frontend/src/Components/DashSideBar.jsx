@@ -64,6 +64,33 @@ export default function DashSideBar() {
                 </Sidebar.Item>
               </Link>
         
+              <Link to="/" key="users">
+                <Sidebar.Item
+                  active={tab === "users"}
+                  icon={HiOutlineUserGroup}
+                  as="div"
+                >
+                  --
+                </Sidebar.Item>
+              </Link>
+              <Link to="/" key="users">
+                <Sidebar.Item
+                  active={tab === "users"}
+                  icon={HiOutlineUserGroup}
+                  as="div"
+                >
+          --
+                </Sidebar.Item>
+              </Link>
+              <Link to="" key="users">
+                <Sidebar.Item
+                  active={tab === "users"}
+                  icon={HiOutlineUserGroup}
+                  as="div"
+                >
+                --
+                </Sidebar.Item>
+              </Link>
            
            
         
