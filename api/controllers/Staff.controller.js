@@ -161,7 +161,7 @@ export const updatestaff= async (req, res, next) => {
   try {
     if (req.body.phonenumber) {
         const mobileRegex = /^(071|076|077|075|078|070|074|072)\d{7}$/;
-        if (!mobileRegex.test(req.body.phonenumber)) {
+        if (!mobileRegex.test(req.body.contactNumber)) {
             return next(errorHandler(400, 'Invalid mobile number format.'));
         }
     }
@@ -169,15 +169,8 @@ export const updatestaff= async (req, res, next) => {
       req.params.id,
       {
         $set: {
-     Staffmembername:req.body.membername,
+     Staffmembername:req.body.Staffmembername,
     
-    Age:req.body.age,
-    phonenumber:req.body.phonenumber,
-    email:req.body.EmailAddress,
-    address:req.body.Address,
-    task:req.body.task,
- 
-    Picture:req.body.image,
     stafftype:req.body.type,
     salary:req.body.salary,
 
