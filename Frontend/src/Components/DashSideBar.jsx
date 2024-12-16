@@ -37,9 +37,9 @@ export default function DashSideBar() {
   };
 
   return (
-    <Sidebar className="w-full md:w-56">
+    <Sidebar className="w-full md:w-56" >
       <Sidebar.Items>
-        <Sidebar.ItemGroup>
+        <Sidebar.ItemGroup >
           <Link to="/dashboard?tab=profile" key="profile">
             <Sidebar.Item
               active={tab === "profile"}
@@ -96,7 +96,7 @@ export default function DashSideBar() {
         
 
 
-
+                           
               
              
 {/* 
