@@ -6,6 +6,7 @@ import DashUsers from "../Components/DashUsers";
 import Dashstaff from "../Components/Dashstaff";
 import AdminDashboard from "../Components/dashuserdetails";
 import SendMail from "./sendMail";
+import Addstaff from "./Addstaff";
 import { useNavigate,useParams } from "react-router-dom";
 
 
@@ -42,6 +43,7 @@ export default function DashBoard() {
       </div>
       {tab==='profile' && <DashProfile/>}
       {tab === 'users' && <DashUsers/>}
+      {tab === 'addstaff' && <Addstaff/>}
       {tab === 'staff' && <Dashstaff/>}
       {tab === 'view'&& id && <AdminDashboard id={id} />}
       {tab === 'sendemail'&& email && <SendMail email={email} />}

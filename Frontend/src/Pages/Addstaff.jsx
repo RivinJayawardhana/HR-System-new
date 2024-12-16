@@ -96,7 +96,7 @@ export default function Addstaff() {
   
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
-        <h1 className="text-center text-3xl my-7 font-semibold">Add Staff Member</h1>
+        <h1 className="text-center text-3xl my-7 font-semibold">Create User</h1>
 
 
 
