@@ -7,6 +7,14 @@ import { app } from "../firebase";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useNavigate } from "react-router-dom";
+import React from 'react';
+import {
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBCheckbox,
+  MDBBtn
+} from 'mdb-react-ui-kit';
 
 export default function Addstaff() {
   const[file,setFile]=useState(null);
@@ -89,6 +97,13 @@ export default function Addstaff() {
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
         <h1 className="text-center text-3xl my-7 font-semibold">Add Staff Member</h1>
+
+
+
+
+
+
+        
         <form className="flex flex-col  gap-4" onSubmit={handleSubmit}>
         
          
