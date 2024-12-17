@@ -2,7 +2,7 @@ import { Button, Modal, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 export default function DashUsers() {
   const { currentUser } = useSelector((state) => state.user);
   const [Staffmembers, setmembers] = useState([]);
@@ -11,9 +11,32 @@ export default function DashUsers() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStaffType, setSelectedStaffType] = useState('');  // New state for radio buttons
 
+     
+
+
+
+
+
+
+
   useEffect(() => {
+
+
+
+
+
       const fetchs = async () => {
         try {
+
+          if(currentUser==null){
+            Navigate('/');
+          }
+
+
+
+
+
+
           const res = await fetch('/api/staff/get');
           const data = await res.json();
           if (res.ok) {
