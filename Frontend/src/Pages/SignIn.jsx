@@ -40,7 +40,7 @@ export default function SignIn() {
                 return;
             }
             dispatch(signInSuccess(data));
-            navigate('/dashboard');
+            navigate('/dashboard?tab=users');
         } catch (error) {
             dispatch(singInFailure(error.message));
         }
