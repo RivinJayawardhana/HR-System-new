@@ -111,14 +111,8 @@ export default function SignIn() {
 </Button>
 
                     </form>
-                    <div className="flex gap-2 text-sm mt-5">
-                        <span>Forgot Password?</span>
-                        <Link to="/forgetPassword" className="text-blue-500">Click Here</Link>
-                    </div>
-                    <div className="flex gap-2 text-sm mt-5">
-                        <span>Don't have an account?</span>
-                        <Link to="/sign-up" className="text-blue-500">Sign Up</Link>
-                    </div>
+                    
+                    
                     <div className="text-red-600">
                         {error && (
                             <Alert className="mt-5" color="failure">
