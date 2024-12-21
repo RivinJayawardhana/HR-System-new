@@ -143,6 +143,8 @@ export default function UpdateStaff() {
     };
 
     return (
+        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="p-6 bg-white shadow-lg rounded-lg border border-gray-200 max-w-4xl w-full">
         <div className="p-3 max-w-3xl mx-auto min-h-screen">
             <h1 className="text-center text-3xl my-7 font-semibold">Personal History Form</h1>
             <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -434,5 +436,9 @@ export default function UpdateStaff() {
                 {publishError && <Alert color="failure">{publishError}</Alert>}
             </form>
         </div>
+        </div>
+
+        </div>
+
     );
 }
