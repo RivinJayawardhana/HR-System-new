@@ -7,7 +7,7 @@ const staffSchema = new mongoose.Schema({
 
         type:String,
         required:true,
-        unique:true
+        
 
     },
 
@@ -18,8 +18,8 @@ const staffSchema = new mongoose.Schema({
 
 
     
-    contactNumber: { type: String, required: true, unique: true },
-    position: { type: String, required: true, unique: true },
+    contactNumber: { type: String, required: true },
+    position: { type: String, required: true },
     
 
     
