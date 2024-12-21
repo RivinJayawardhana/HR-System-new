@@ -34,6 +34,23 @@ const DocumentDropdown = ({ id }) => {
         "spouseDetails",
         "emergencyContact",
       ],
+
+      labels: {
+        fullname: "Full Name",
+        address: "Address",
+        contactno: "Contact Number",
+        NIC: "National ID",
+        dateofbirth: "Date of Birth",
+        status: "Status",
+        document1: "Document",
+        academicQualifications: "Academic Qualifications",
+        previousEmploymentDetails: "Previous Employment Details",
+        spouseDetails: "Spouse Details",
+        emergencyContact: "Emergency Contact",
+      },
+
+
+
     },
     {
       id: "employment_form",
@@ -187,14 +204,7 @@ const DocumentDropdown = ({ id }) => {
             spacing={2}
             sx={{ mt: 2, justifyContent: "flex-end" }}
           >
-            <Link to={`/`}>
-              <Button variant="contained" color="primary">
-                Edit
-              </Button>
-            </Link>
-            <Button variant="contained" color="success">
-              Approve
-            </Button>
+     
             <Button variant="contained" color="error">
               Print
             </Button>
