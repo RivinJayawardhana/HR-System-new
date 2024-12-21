@@ -418,7 +418,7 @@ export default function UpdateStaff() {
   accept="application/pdf"
   onChange={(e) => setFile(e.target.files[0])}
 />
-            <Button onClick={handleUploadImage} type='button'gradientDuoTone='purpleToBlue'size='sm' outline disabled={imageUploadProgress}>
+            <Button onClick={handleUploadImage} type='button' className="bg-black text-white" size='sm' outline disabled={imageUploadProgress}>
               {
                 imageUploadProgress ?(
                 <div className="w-16 h-16" >
