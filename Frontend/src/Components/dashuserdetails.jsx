@@ -100,122 +100,126 @@ const DocumentDropdown = ({ id }) => {
 
   return (
     <Box sx={{ width: "800px", margin: "0 auto", mt: 5 }}>
-      <Typography variant="h4" component="h1" sx={{ mb: 3 }}>
-        User Documents - Select Documents
-      </Typography>
-
-      <FormControl fullWidth>
-        <InputLabel id="form-select-label">Select Document</InputLabel>
-        <Select
-          labelId="form-select-label"
-          value={selectedForm}
-          onChange={handleSelectChange}
-        >
-          {formTypes.map((form) => (
-            <MenuItem key={form.id} value={form.id}>
-              {form.name}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {loading ? (
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
-          <CircularProgress />
-        </Box>
-      ) : formDetails ? (
-        <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
-  <Typography variant="h6" sx={{ mb: 2 }}>
-    Form Details
-  </Typography>
-  <Grid container spacing={2}>
-    {formTypes
-      .find((form) => form.id === selectedForm)
-      .fields.map((field) => {
-        const label =
-          formTypes.find((form) => form.id === selectedForm).labels[field] ||
-          field.replace(/([A-Z])/g, " $1");
-
-        return (
-          <Grid item xs={12} sm={6} key={field}>
-            <Typography variant="body1">
-              <strong>{label}: </strong>
-              {Array.isArray(formDetails[field]) ? (
-                <ul>
-                  {formDetails[field].map((item, index) =>
-                    typeof item === "object" ? (
-                      <li key={index}>
-                        {Object.entries(item).map(([key, value]) => (
-                          <Typography key={key} variant="body2">
-                            <strong>{key.replace(/([A-Z])/g, " $1")}: </strong>
-                            {value}
-                          </Typography>
-                        ))}
-                      </li>
-                    ) : (
-                      <li key={index}>
-                        <Typography variant="body2">{item}</Typography>
-                      </li>
-                    )
-                  )}
-                </ul>
-              ) : typeof formDetails[field] === "object" ? (
-                <ul>
-                  {Object.entries(formDetails[field]).map(([key, value]) => (
-                    <li key={key}>
-                      <Typography variant="body2">
-                        <strong>
-                          {key.replace(/([A-Z])/g, " $1")}:{" "}
-                        </strong>
-                        {value}
-                      </Typography>
-                    </li>
-                  ))}
-                </ul>
-              ) : field === "document1" ? (
-                <a
-                  href={formDetails[field]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ textDecoration: "none", color: "#1976d2" }}
-                >
-                  View Document
-                </a>
-              ) : (
-                formDetails[field] || "N/A"
-              )}
-            </Typography>
-          </Grid>
-        );
-      })}
-  </Grid>
-  {formDetails.status && (
-    <Typography variant="body1" sx={{ mt: 2 }}>
-      <strong>Status:</strong>{" "}
-      <Chip
-        label={formDetails.status}
-        color={formDetails.status === "Submitted" ? "success" : "warning"}
-        size="small"
-      />
+    <Typography variant="h4" component="h1" sx={{ mb: 3 }}>
+      User Documents - Select Documents
     </Typography>
-  )}
-  <Stack
-    direction="row"
-    spacing={2}
-    sx={{ mt: 2, justifyContent: "flex-end" }}
-  >
-    <Button variant="contained" color="error">
-      Print
-    </Button>
-  </Stack>
-</Paper>
-
-      ) : (
-        <Typography variant="body1" sx={{ mt: 3 }}>
-          No form details available.
+  
+    <FormControl fullWidth>
+      <InputLabel id="form-select-label">Select Document </InputLabel>
+      <Select
+        labelId="form-select-label"
+        value={selectedForm}
+        onChange={handleSelectChange}
+      >
+        {formTypes.map((form) => (
+          <MenuItem key={form.id} value={form.id}>
+            {form.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  
+    {loading ? (
+      <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
+        <CircularProgress />
+      </Box>
+    ) : formDetails ? (
+      <Paper elevation={3} sx={{ mt: 3, p: 2 }}>
+        <Typography variant="h6" sx={{ mb: 2 }}>
+          Form Details
         </Typography>
-      )}
-    </Box>
+        <Grid container spacing={2}>
+          {formTypes
+            .find((form) => form.id === selectedForm)
+            .fields.map((field) => {
+              const label =
+                formTypes.find((form) => form.id === selectedForm).labels[field] ||
+                field.replace(/([A-Z])/g, " $1");
+  
+              return (
+                <Grid item xs={12} sm={6} key={field}>
+                  <Typography variant="body1">
+                    <strong>{label}: </strong>
+                    {Array.isArray(formDetails[field]) ? (
+                      <ul>
+                        {formDetails[field].map((item, index) =>
+                          typeof item === "object" ? (
+                            <li key={index}>
+                              {Object.entries(item)
+                                .filter(([key]) => key !== "id") // Exclude the "id" field
+                                .map(([key, value]) => (
+                                  <Typography key={key} variant="body2">
+                                    <strong>{key.replace(/([A-Z])/g, " $1")}: </strong>
+                                    {value}
+                                  </Typography>
+                                ))}
+                            </li>
+                          ) : (
+                            <li key={index}>
+                              <Typography variant="body2">{item}</Typography>
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    ) : typeof formDetails[field] === "object" ? (
+                      <ul>
+                        {Object.entries(formDetails[field])
+                          .filter(([key]) => key !== "_id") // Exclude the "id" field
+                          .map(([key, value]) => (
+                            <li key={key}>
+                              <Typography variant="body2">
+                                <strong>
+                                  {key.replace(/([A-Z])/g, " $1")}:{" "}
+                                </strong>
+                                {value}
+                              </Typography>
+                            </li>
+                          ))}
+                      </ul>
+                    ) : field === "document1" ? (
+                      <a
+                        href={formDetails[field]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", color: "#1976d2" }}
+                      >
+                        View Document
+                      </a>
+                    ) : (
+                      formDetails[field] || "N/A"
+                    )}
+                  </Typography>
+                </Grid>
+              );
+            })}
+        </Grid>
+        {formDetails.status && (
+          <Typography variant="body1" sx={{ mt: 2 }}>
+            <strong>Status:</strong>{" "}
+            <Chip
+              label={formDetails.status}
+              color={formDetails.status === "Submitted" ? "success" : "warning"}
+              size="small"
+            />
+          </Typography>
+        )}
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{ mt: 2, justifyContent: "flex-end" }}
+        >
+          <Button variant="contained" color="error">
+            Print
+          </Button>
+        </Stack>
+      </Paper>
+    ) : (
+      <Typography variant="body1" sx={{ mt: 3 }}>
+        No form details available.
+      </Typography>
+    )}
+  </Box>
+  
   );
 };
 
