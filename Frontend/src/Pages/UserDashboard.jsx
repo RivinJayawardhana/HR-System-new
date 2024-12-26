@@ -33,7 +33,7 @@ const UserDashboard = () => {
   const handleSignOut = () => {
     // Add your sign-out logic here
     console.log("User signed out");
-    navigate("/login"); // Navigate to the login page
+    navigate("/userlogin"); // Navigate to the login page
   };
 
   return (
