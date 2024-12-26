@@ -36,6 +36,10 @@ const DocumentDropdown = ({ id }) => {
         "previousEmploymentDetails",
         "spouseDetails",
         "emergencyContact",
+        "BankName",
+        "BankAccNum",
+        "Branch",
+        "civilStatus"
       ],
       labels: {
         fullname: "Full Name",
