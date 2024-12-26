@@ -48,7 +48,7 @@ const DocumentDropdown = ({ id }) => {
         NIC: "National ID",
         dateofbirth: "Date of Birth",
         status: "Status",
-        document1: "Document",
+        document1: "Image",
         academicQualifications: "Academic Qualifications",
         previousEmploymentDetails: "Previous Employment Details",
         spouseDetails: "Spouse Details",
