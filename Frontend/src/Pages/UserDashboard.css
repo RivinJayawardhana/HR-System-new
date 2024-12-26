@@ -1,134 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fc;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dashboard-container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dashboard-title {
-    text-align: center;
-    font-size: 2rem;
-    color: #333333;
-    margin-bottom: 20px;
-  }
-  
-  .tiles-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .form-tile {
-    width: 250px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .form-tile:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  }
-  
-  .completed {
-    background-color: #d4edda;
-    color: #155724;
-  }
-  
-  .pending {
-    background-color: #f8d7da;
-    color: #721c24;
-  }
-  
-  .form-title {
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  
-  .form-description {
-    margin: 10px 0;
-    font-size: 0.9rem;
-    color: #666666;
-  }
-  
-  .form-status {
-    font-weight: bold;
-  }
-  
-  .form-modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .form-input {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .form-submit-btn {
-    padding: 10px 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .form-cancel-btn {
-    padding: 10px 20px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .form-submit-btn:hover {
-    background-color: #218838;
-  }
-  
-  .form-cancel-btn:hover {
-    background-color: #c82333;
-  }
-  
-  .form-update-btn {
-    margin-top: 15px;
-    margin-right: 10px;
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .form-update-btn:hover {
-    background-color: #388e3c;
-  }
-  
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-tile {
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.form-tile:hover {
+  transform: scale(1.05);
+}
+
+.form-status {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.form-update-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-cancel-btn {
+  margin-top: 10px;
+  width: 100%;
+}
