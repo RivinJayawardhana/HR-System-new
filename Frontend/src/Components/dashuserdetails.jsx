@@ -138,58 +138,61 @@ const DocumentDropdown = ({ id }) => {
   
               return (
                 <Grid item xs={12} sm={6} key={field}>
-                  <Typography variant="body1">
-                    <strong>{label}: </strong>
-                    {Array.isArray(formDetails[field]) ? (
-                      <ul>
-                        {formDetails[field].map((item, index) =>
-                          typeof item === "object" ? (
-                            <li key={index}>
-                              {Object.entries(item)
-                                .filter(([key]) => key !== "id") // Exclude the "id" field
-                                .map(([key, value]) => (
-                                  <Typography key={key} variant="body2">
-                                    <strong>{key.replace(/([A-Z])/g, " $1")}: </strong>
-                                    {value}
-                                  </Typography>
-                                ))}
-                            </li>
-                          ) : (
-                            <li key={index}>
-                              <Typography variant="body2">{item}</Typography>
-                            </li>
-                          )
-                        )}
-                      </ul>
-                    ) : typeof formDetails[field] === "object" ? (
-                      <ul>
-                        {Object.entries(formDetails[field])
-                          .filter(([key]) => key !== "_id") // Exclude the "id" field
-                          .map(([key, value]) => (
-                            <li key={key}>
-                              <Typography variant="body2">
-                                <strong>
-                                  {key.replace(/([A-Z])/g, " $1")}:{" "}
-                                </strong>
-                                {value}
-                              </Typography>
-                            </li>
-                          ))}
-                      </ul>
-                    ) : field === "document1" ? (
-                      <a
-                        href={formDetails[field]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ textDecoration: "none", color: "#1976d2" }}
-                      >
-                        View Document
-                      </a>
-                    ) : (
-                      formDetails[field] || "N/A"
-                    )}
+  <Typography variant="body1">
+    <strong>{label}: </strong>
+    {Array.isArray(formDetails[field]) ? (
+      <ul>
+        {formDetails[field].map((item, index) => {
+          console.log(item); // Debugging
+          return typeof item === "object" ? (
+            <li key={index}>
+              {Object.entries(item)
+                .filter(([key]) => key !== "_id") // Exclude "_id"
+                .map(([key, value]) => (
+                  <Typography key={key} variant="body2">
+                    <strong>{key.replace(/([A-Z])/g, " $1")}: </strong>
+                    {value}
                   </Typography>
-                </Grid>
+                ))}
+            </li>
+          ) : (
+            <li key={index}>
+              <Typography variant="body2">{item}</Typography>
+            </li>
+          );
+        })}
+      </ul>
+    ) : typeof formDetails[field] === "object" ? (
+      <>
+        {console.log(formDetails[field])} {/* Debugging */}
+        <ul>
+          {Object.entries(formDetails[field])
+            .filter(([key]) => key !== "_id") // Exclude "_id"
+            .map(([key, value]) => (
+              <li key={key}>
+                <Typography variant="body2">
+                  <strong>{key.replace(/([A-Z])/g, " $1")}: </strong>
+                  {value}
+                </Typography>
+              </li>
+            ))}
+        </ul>
+      </>
+    ) : field === "document1" ? (
+      <a
+        href={formDetails[field]}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: "none", color: "#1976d2" }}
+      >
+        View Document
+      </a>
+    ) : (
+      formDetails[field] || "N/A"
+    )}
+  </Typography>
+</Grid>
+
               );
             })}
         </Grid>
