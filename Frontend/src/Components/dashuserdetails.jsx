@@ -16,7 +16,7 @@ import {
   CircularProgress,
   Divider,
 } from "@mui/material";
-import { Print as PrintIcon, ArrowForward as ArrowForwardIcon } from "@mui/icons-material";
+import { Print as PrintIcon, ArrowForward as ArrowForwardIcon } from "@mui/icons-material"; // Import ArrowForwardIcon here
 
 const DocumentDropdown = ({ id }) => {
   const formTypes = [
@@ -39,7 +39,7 @@ const DocumentDropdown = ({ id }) => {
         "BankName",
         "BankAccNum",
         "Branch",
-        "civilStatus"
+        "civilStatus",
       ],
       labels: {
         fullname: "Full Name",
@@ -53,6 +53,10 @@ const DocumentDropdown = ({ id }) => {
         previousEmploymentDetails: "Previous Employment Details",
         spouseDetails: "Spouse Details",
         emergencyContact: "Emergency Contact",
+        BankName: "Bank Name",
+        BankAccNum: "Bank Account Number",
+        Branch: "Branch",
+        civilStatus: "Civil Status",
       },
     },
     {
@@ -217,7 +221,16 @@ const DocumentDropdown = ({ id }) => {
             >
               Print
             </Button>
-           
+            <Button
+              variant="outlined"
+              color="primary"
+              startIcon={<ArrowForwardIcon />}
+              component={Link}
+              to="/other-page" // Change this to the route you want
+              sx={{ textTransform: "none" }}
+            >
+              Next
+            </Button>
           </Stack>
         </Card>
       ) : (
