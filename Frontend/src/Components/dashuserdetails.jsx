@@ -221,16 +221,7 @@ const DocumentDropdown = ({ id }) => {
             >
               Print
             </Button>
-            <Button
-              variant="outlined"
-              color="primary"
-              startIcon={<ArrowForwardIcon />}
-              component={Link}
-              to="/other-page" // Change this to the route you want
-              sx={{ textTransform: "none" }}
-            >
-              Next
-            </Button>
+         
           </Stack>
         </Card>
       ) : (
