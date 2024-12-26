@@ -6,6 +6,12 @@ import "./UserDashboard.css"; // Import CSS for styling
 
 const dummyForms = [
   { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
+  { id: 1, title: "Personal Details", description: "Fill in your personal information.", status: "Pending" },
   // Add more forms if needed
 ];
 
@@ -27,7 +33,7 @@ const UserDashboard = () => {
   };
 
   const handleSubmitClick = () => {
-    navigate(`/historyform/${id}`);
+    navigate(`/histryform/${id}`);
   };
 
   const handleSignOut = () => {
