@@ -86,7 +86,7 @@ export default function UserSignIn() {
                             </button>
                         </div>
                     </div>
-                    <Button className="bg-slate-500" disabled={loading} gradientDuoTone='purpleToBlue' type="submit">
+                    <Button className="bg-slate-500" disabled={loading} className="bg-black text-white hover:bg-gray-800"  type="submit">
                         {loading ? (
                             <>
                                 <Spinner size='sm' />
